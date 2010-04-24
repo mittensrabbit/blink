@@ -23,7 +23,10 @@
 		public function StageSelection() 
 		{
 			this.container = new MovieClip;
-			this.container.addChild(new Fla_SelectionBackground());
+			var background:MovieClip;
+			background = new Fla_SelectionBackground();
+			background.cacheAsBitmap = true;
+			this.container.addChild(background);
 			this.display = new MovieClip();
 			this.container.addChild(display);
 			this.display.addEventListener(Event.ENTER_FRAME, handleEnterFrame);

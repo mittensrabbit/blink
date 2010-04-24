@@ -28,7 +28,7 @@
 		private var bossResultScreen:BossResultScreen;
 		private var stageSelection:StageSelection;
 		private var player:Player;
-		private var hud:MovieClip;
+		private var hud:HeadsUpDisplay;
 		private var level:Level;
 		private var projectileEngine:ProjectileEngine;
 		
@@ -104,7 +104,7 @@
 			
 			this._zapperLightning = new Zapper(this.player, 300, 200);
 			
-			this.hud = new Fla_HUD();
+			this.hud = new HeadsUpDisplay(player.playerData);
 			addChild(level.layers[0].container);
 			addChild(projectileEngine.container);
 			addChild(level.boss.container);
@@ -114,7 +114,7 @@
 
 			
 			//addChild(level.layers[1].container);
-			addChild(hud);		
+			addChild(hud.container);		
 		}
 		
 		private function createBackgroundLayer(mc:MovieClip, alpha:Number):GraphicLayer
@@ -160,7 +160,8 @@
 		
 		private function updateHUD():void
 		{
-			hud.weakness.field.text = Math.round(player.playerData.damageMultiplier) + "%";
+			hud.update();
+			//hud.weakness.field.text = Math.round(player.playerData.damageMultiplier) + "%";
 		}
 		
 		private function handleProjectileRequest(event:ProjectileRequestEvent):void
