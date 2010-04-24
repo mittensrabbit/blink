@@ -15,9 +15,9 @@
 			this.projectile = projectile;
 		}
 		
-		public function update():Point
+		public function update():void
 		{
-			return new Point(0, 0);
+
 		}
 	}
 	

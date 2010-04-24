@@ -34,6 +34,7 @@
 			
 			var projectile:Projectile = new Projectile(bullet);
 			projectile.addBehaviour(new StraightProjectileMovement(projectile));
+			projectile.addBehaviour(new RotateProjectile(projectile,player.playerData));
 			
 			_projectiles.push(projectile);
 			container.addChild(projectile.container);
