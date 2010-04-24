@@ -27,7 +27,7 @@
 		public function addProjectile(event:ProjectileRequestEvent):void
 		{
 			// Determine bullet, assign behaviour
-			var bullet:MovieClip = new Fla_LaserProjectile();
+			var bullet:MovieClip = new Fla_RedMissle();
 			bullet.rotation = event.emitterData.rotation;
 			bullet.x = event.emitterData.coords.x;
 			bullet.y = event.emitterData.coords.y;

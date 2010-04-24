@@ -25,6 +25,7 @@
 	public class BlinkApplication extends Sprite
 	{
 		private var titleScreen:Title;
+		private var bossResultScreen:BossResultScreen;
 		private var stageSelection:StageSelection;
 		private var player:Player;
 		private var hud:MovieClip;
@@ -38,6 +39,7 @@
 			this.stage.quality = "MEDIUM";
 			this.titleScreen = new Title(new Fla_Title());
 			this.titleScreen.container.addEventListener(MouseEvent.CLICK, handleTitleClick);
+			this.bossResultScreen = new BossResultScreen();
 			this.addChild(titleScreen.container);
 			
 		}
@@ -48,11 +50,12 @@
 			this.stageSelection = new StageSelection();
 			this.stageSelection.container.addEventListener(LevelRequestEvent.LEVEL_REQUEST, handleLevelRequest);
 			
-			this.stageSelection.addBossSelection(new StageSelectionElement("Goat",  "Intro stage - learn to fly and blink!" ));
-			this.stageSelection.addBossSelection(new StageSelectionElement("Boss name lol", "Beware the missles!" ));
-			this.stageSelection.addBossSelection(new StageSelectionElement("ROFLCOPTER", "Trolol!" ));
+			this.stageSelection.addBossSelection(new StageSelectionElement(BossName.GOAT,  "Intro stage - learn to fly and blink!" ));
+			this.stageSelection.addBossSelection(new StageSelectionElement(BossName.AIR_SENTRY, "Beware the missles!" ));
+			this.stageSelection.addBossSelection(new StageSelectionElement(BossName.TROLL_FACE, "Trolol!" ));
 			this.stageSelection.addBossSelection(new StageSelectionElement("Level 4", "This is my Element" ));
 
+			
 			this.addChild(stageSelection.container);
 			this.addChild(stageSelection.handles);
 		}
@@ -63,6 +66,13 @@
 			removeChild(stageSelection.container);
 			removeChild(stageSelection.handles);
 			initLevel();
+			
+			
+			var levelResult:LevelResultData = new LevelResultData(new Date());
+			levelResult.setRanking(2);
+			bossResultScreen.refresh(levelResult);
+			
+			//addChild(bossResultScreen.container);
 			stage.focus = stage;
 		}
 		
@@ -96,9 +106,10 @@
 			addChild(level.layers[0].container);
 			addChild(projectileEngine.container);
 			addChild(level.boss.container);
+			addChild(this._zapperLightning);
 			addChild(player.ship);
 			addChild(player);
-			addChild(this._zapperLightning);
+
 			
 			//addChild(level.layers[1].container);
 			addChild(hud);		
