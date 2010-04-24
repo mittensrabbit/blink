@@ -126,6 +126,22 @@
 		{
 			playerData.coords.y -= (magnitude_up - magnitude_down);
 			playerData.coords.x -= (magnitude_left - magnitude_right);	
+			checkPlayBounds();
+		}
+		
+		private function checkPlayBounds():void
+		{
+			if (playerData.coords.x > 650)
+				playerData.coords.x = 650;
+			
+			if (playerData.coords.x < 150)
+				playerData.coords.x = 150;	
+			
+			if (playerData.coords.y > 600)
+				playerData.coords.y = 600;
+			
+			if (playerData.coords.y < 0)
+				playerData.coords.y = 0;	
 		}
 		
 		private function reduceDamageMultiplier():void
