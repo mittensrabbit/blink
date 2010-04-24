@@ -105,7 +105,7 @@
 			//endLevel();
 		}
 		
-		private function endLevel()
+		public function endLevel()
 		{
 			//show results, update stage selection screen with new rank etc..
 			stage.removeEventListener(Event.ENTER_FRAME, mainGameLoop);
@@ -132,7 +132,7 @@
 			this.player = new Player();		
 			this.level = new Level();
 			this.projectileEngine = new ProjectileEngine(player);
-			this.level.setBoss(new GoatBoss(new Fla_Boss()));
+			this.level.setBoss(new GoatBoss(this, new Fla_Boss()));
 			
 			level.boss.container.addEventListener(ProjectileRequestEvent.PROJECT_REQUEST, handleProjectileRequest);
 			this.projectileEngine.container.addEventListener(ProjectileRequestEvent.PROJECT_REQUEST, handleProjectileRequest);
@@ -211,6 +211,9 @@
 		private function handleProjectileRequest(event:ProjectileRequestEvent):void
 		{
 			projectileEngine.addProjectile(event);
+		}
+		public function bossDead():void {
+			
 		}
 	}
 	

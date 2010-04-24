@@ -19,9 +19,11 @@
 		public var _boss_mc:MovieClip;
 		protected var _movement:Number = 1;
 		protected var _rotation:Number = 1;
+		protected var _blinkApplicationRef:BlinkApplication 
 		
-		public function Boss(container:MovieClip) 
+		public function Boss(pBlinkApp:BlinkApplication, container:MovieClip) 
 		{
+			this._blinkApplicationRef = pBlinkApp;
 			this.emitters = new Array();
 			this.container = container;
 			this.bossData = new BossData(this);
@@ -91,7 +93,7 @@
 		
 		public function bossDead():void 
 		{
-			
+			//container.removeChild(this.
 		}
 		
 		//OVERRIDE THOSE IN CHILD CLASSES
