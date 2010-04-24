@@ -14,6 +14,7 @@
 	import flash.filters.BlurFilter;
 	import flash.geom.Point;
 	import flash.text.TextField;
+	import flash.ui.Mouse;
 	import projectiles.ProjectileRequestEvent;
 	import projectiles.ProjectileEngine;
 	import renderer.GraphicElement;
@@ -38,6 +39,8 @@
 		private var rulesPage:MovieClip;
 		
 		private var _zapperLightning:Zapper;
+		
+		public var blinkCooldown:Number = 0;
 		
 		public function BlinkApplication() 
 		{
@@ -128,7 +131,7 @@
 		
 		private function initLevel(pBossType:String):void
 		{
-			this.player = new Player();		
+			this.player = new Player(this);		
 			this.level = new Level();
 			this.projectileEngine = new ProjectileEngine(player);
 			
@@ -199,6 +202,11 @@
 		
 		private function mainGameLoop(event:Event):void
 		{
+			this.blinkCooldown = (this.blinkCooldown < 1? 0:this.blinkCooldown - 1);
+			if (player.ship.hitTestObject(this.level.boss._boss_mc)) {
+				//player.blink();
+			}
+			
 			updateHUD();
 			player.handleEnterFrame(event);
 			level.render(event);
