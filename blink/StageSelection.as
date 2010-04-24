@@ -13,79 +13,56 @@
 		public const OFFSET:int = 50;
 		
 		public var container:MovieClip;
-		public var buttons:MovieClip;
+		private var display:MovieClip;
 		
-		private var handles:MovieClip
+		public var handles:MovieClip
 		private var selections:Array;
-		private var upHandle:MovieClip;
-		private var downHandle:MovieClip;
 		
-		private var scrollingDown:Boolean;
-		private var scrollingUp:Boolean;
+		private var scrollingSpeed:int = 0;
 		
 		public function StageSelection() 
 		{
-			this.container = new MovieClip();
-			this.container.addEventListener(Event.ENTER_FRAME, handleEnterFrame);
+			this.container = new MovieClip;
+			this.container.addChild(new Fla_SelectionBackground());
+			this.display = new MovieClip();
+			this.container.addChild(display);
+			this.display.addEventListener(Event.ENTER_FRAME, handleEnterFrame);
+			this.display.addEventListener(MouseEvent.MOUSE_MOVE, handleMouseMove);
 			this.selections = new Array();
 			
-			this.buttons = new MovieClip();
-			
-			this.upHandle = new Fla_SelectionUp();
-			upHandle.addEventListener(MouseEvent.MOUSE_OVER, handleMouseOver);
-			upHandle.addEventListener(MouseEvent.MOUSE_OUT, handleMouseOut);
-			
-			this.scrollingDown = false;
-			this.scrollingUp = false;
-			
-			this.downHandle = new Fla_SelectionDown();
-			downHandle.addEventListener(MouseEvent.MOUSE_OVER, handleMouseOver);
-			downHandle.addEventListener(MouseEvent.MOUSE_OUT, handleMouseOut);
-			downHandle.y = 500;
-			this.buttons.addChild(upHandle);
-			this.buttons.addChild(downHandle);
+		
+			this.handles = new Fla_SelectionHandlers();
+			this.handles.mouseEnabled = false;
+			this.handles.mouseChildren = false;
 		}
 				
 		public function addBossSelection(selection:StageSelectionElement):void
 		{
 			selections.push(selection);
 			selection.container.y = OFFSET + StageSelectionElement.HEIGHT * selections.length;
-			this.container.addChild(selection.container);
+			this.display.addChild(selection.container);
 		}
-	
-		private function handleMouseOver(event:MouseEvent):void
+
+		
+		private function handleMouseMove(event:MouseEvent):void
 		{
-			if (event.target == this.downHandle)
-			{
-				scrollingDown = true;
-			}
-			if (event.target == this.upHandle)
-			{
-				scrollingUp = true;
-			}
-		}
-		private function handleMouseOut(event:MouseEvent):void
-		{
-			if (event.target == this.downHandle)
-			{
-				scrollingDown = false
-			}
-			if (event.target == this.upHandle)
-			{
-				scrollingUp = false;
-			}
+			scrollingSpeed = 300 - event.stageY;
 		}
 		
 		private function handleEnterFrame(event:Event):void
 		{
-			if (scrollingUp && this.container.y < 0  )//
+			
+			if (Math.abs(scrollingSpeed) > 25 )
 			{
-				this.container.y += 5;
+				this.display.y += (scrollingSpeed)/25;
 			}
-			if (scrollingDown ) // && this.container.y > OFFSET + StageSelectionElement.HEIGHT * selections.length * 4
-			{
-				this.container.y -= 5;
-			}
+			
+			if (this.display.y > 0)
+				this.display.y = 0;
+			
+			if (this.display.y < -StageSelectionElement.HEIGHT *  (selections.length -3))
+				this.display.y = -StageSelectionElement.HEIGHT *  (selections.length -3);
+
 		}
 	}
 	

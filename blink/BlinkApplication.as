@@ -52,14 +52,14 @@
 			this.stageSelection.addBossSelection(new StageSelectionElement("Level 4", "This is my Element" ));
 
 			this.addChild(stageSelection.container);
-			this.addChild(stageSelection.buttons);
+			this.addChild(stageSelection.handles);
 		}
 		
 		private function handleLevelRequest(event:LevelRequestEvent):void
 		{
 			this.stageSelection.container.removeEventListener(LevelRequestEvent.LEVEL_REQUEST, handleLevelRequest);
 			removeChild(stageSelection.container);
-			removeChild(stageSelection.buttons);
+			removeChild(stageSelection.handles);
 			initLevel();
 			stage.focus = stage;
 		}
