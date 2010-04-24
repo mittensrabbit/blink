@@ -35,10 +35,8 @@
 
 		public function refresh(levelResultData:LevelResultData):void
 		{
-			this.container.stars.gotoAndStop(levelResultData.ranking+1);
-			this.container.milli.text = "" + levelResultData.finalTime.getMilliseconds();
-			this.container.seconds.text = "" + levelResultData.finalTime.getSeconds();
-			this.container.minutes.text = ""+levelResultData.finalTime.getMinutes();
+			this.container.stars.gotoAndStop(levelResultData.ranking + 1);
+			this.container.bestTime.text = levelResultData.timeAsString;
 		}
 		
 		private function handleMouseClick(event:MouseEvent):void
