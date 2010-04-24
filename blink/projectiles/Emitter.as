@@ -25,7 +25,6 @@
 			this.emitter = emitter;
 			this.emitterData = new EmitterData();
 			this.emitterData.coords = new Point(emitter.x+ shiftX, emitter.y + shiftY);
-			trace("emitx " + this.emitter.x + " this.emit.y " + this.emitter.y);
 			this.emitterData.rotation = emitter.rotation;
 			this.emitterData.type = type;
 			this.cooldown = 89;
