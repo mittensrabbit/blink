@@ -40,7 +40,5 @@
 			healthPercent = int((bossData.health / BossData.MAX_HEALTH) * 100);
 			this.bossMeter.update(healthPercent);
 		}
-		
 	}
-	
 }

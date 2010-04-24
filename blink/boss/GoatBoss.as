@@ -25,6 +25,12 @@
 			if (this._boss_mc.x > 450 || this._boss_mc.x < 250)
 				this._movement = -this._movement;
 		}
+		
+		public override function bossDead():void {
+			container.removeChild(this._boss_mc);
+			trace("VERY DEAD");
+		}
+		
 		//protected override function rotateBoss():void {
 			//this._boss_mc.rotation += this._rotation;
 			//if (this._boss_mc.rotation > 10 || this._boss_mc.rotation < -10)

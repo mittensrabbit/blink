@@ -24,7 +24,7 @@
 		{
 			this.emitters = new Array();
 			this.container = container;
-			this.bossData = new BossData();
+			this.bossData = new BossData(this);
 			//initializeEmitters();
 		}
 		
@@ -87,8 +87,14 @@
 				emitter.moveEmitter(this._movement, 0);
 				emitter.rotateEmitter(this._rotation);
 			}
+		}
+		
+		public function bossDead():void 
+		{
 			
 		}
+		
+		//OVERRIDE THOSE IN CHILD CLASSES
 		protected function moveBoss():void 
 		{
 			
