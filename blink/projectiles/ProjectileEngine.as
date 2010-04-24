@@ -35,6 +35,7 @@
 			if (event.emitterData.type == EmitterTypes.LASER)
 			{
 				bullet = new Fla_LaserProjectile();
+				bullet.hitTest.visible = false;
 				projectile = new Projectile(bullet, 120, 5);
 				projectile.addBehaviour(new StraightProjectileMovement(projectile, 12));
 				
@@ -44,6 +45,7 @@
 			else if (event.emitterData.type == EmitterTypes.MISSILE_RED)
 			{
 				bullet = new Fla_RedMissle();
+				bullet.hitTest.visible = false;
 				projectile = new Projectile(bullet, 90,12);
 				projectile.addBehaviour(new StraightProjectileMovement(projectile, 10));
 				projectile.addBehaviour(new RotateProjectileMovement(projectile, player.playerData));
@@ -52,6 +54,7 @@
 			else if (event.emitterData.type == EmitterTypes.MISSILE_BLUE)
 			{
 				bullet = new Fla_LaserProjectile();
+				bullet.hitTest.visible = false;
 				projectile = new Projectile(bullet, 90,10);
 				projectile.addBehaviour(new StraightProjectileMovement(projectile, 10));
 				projectile.addBehaviour(new RotateProjectileMovement(projectile, player.playerData));
@@ -60,6 +63,7 @@
 			else if (event.emitterData.type == EmitterTypes.MISSILE_YELLOW)
 			{
 				bullet = new Fla_LaserProjectile();
+				bullet.hitTest.visible = false;
 				projectile = new Projectile(bullet, 90,10);
 				projectile.addBehaviour(new StraightProjectileMovement(projectile, 10));
 				projectile.addBehaviour(new RotateProjectileMovement(projectile, player.playerData));
@@ -68,6 +72,7 @@
 			else if (event.emitterData.type == EmitterTypes.EXPLOSION_CLOUD)
 			{
 				bullet = new Fla_LaserProjectile();
+				bullet.hitTest.visible = false;
 				projectile = new Projectile(bullet, 30,3);
 				projectile.addBehaviour(new StraightProjectileMovement(projectile, 1));
 				
@@ -75,6 +80,7 @@
 			else if (event.emitterData.type == EmitterTypes.EXPLOSION_BULLET)
 			{
 				bullet = new Fla_LaserProjectile();
+				bullet.hitTest.visible = false;
 				projectile = new Projectile(bullet, 30,5);
 				projectile.addBehaviour(new StraightProjectileMovement(projectile, 8));
 				
@@ -82,6 +88,7 @@
 			else if (event.emitterData.type == EmitterTypes.EXPLOSION_HOMING)
 			{
 				bullet = new Fla_LaserProjectile();
+				bullet.hitTest.visible = false;
 				projectile = new Projectile(bullet, 30,5);
 				projectile.addBehaviour(new StraightProjectileMovement(projectile, 12));
 				projectile.addBehaviour(new RotateProjectileMovement(projectile, player.playerData));
