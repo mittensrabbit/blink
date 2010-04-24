@@ -41,10 +41,20 @@
 			this.titleScreen = new Title(new Fla_Title());
 			this.titleScreen.container.addEventListener(MouseEvent.CLICK, handleTitleClick);
 			this.bossResultScreen = new BossResultScreen();
+			this.bossResultScreen.container.addEventListener(MouseEvent.CLICK, showSelectorScreenFromResults);
+			
 			this.rulesPage = new Fla_Rules(); 
 			this.rulesPage.addEventListener(MouseEvent.CLICK, startLevel);
 			this.addChild(titleScreen.container);
 			
+		}
+		
+		private function showSelectorScreenFromResults(event:MouseEvent):void
+		{
+			this.removeChild(bossResultScreen.container);
+			this.addChild(stageSelection.container);
+			this.addChild(stageSelection.handles);
+			this.stageSelection.container.addEventListener(LevelRequestEvent.LEVEL_REQUEST, handleLevelRequest);
 		}
 		
 		private function handleTitleClick(event:MouseEvent):void
@@ -86,6 +96,30 @@
 			stage.addEventListener(KeyboardEvent.KEY_DOWN, handleKeyboardDown);
 			stage.addEventListener(KeyboardEvent.KEY_UP, handleKeyboardUp);
 			stage.addEventListener(MouseEvent.MOUSE_DOWN, handleMouseClick);		
+			
+			//endLevel();
+		}
+		
+		private function endLevel()
+		{
+			//show results, update stage selection screen with new rank etc..
+			stage.removeEventListener(Event.ENTER_FRAME, mainGameLoop);
+			stage.removeEventListener(KeyboardEvent.KEY_DOWN, handleKeyboardDown);
+			stage.removeEventListener(KeyboardEvent.KEY_UP, handleKeyboardUp);
+			stage.removeEventListener(MouseEvent.MOUSE_DOWN, handleMouseClick);	
+			addChild(bossResultScreen.container);
+			
+			removeChild(level.layers[0].container);
+			removeChild(projectileEngine.container);
+			removeChild(level.boss.container);
+			removeChild(this._zapperLightning);
+			removeChild(player.ship);
+			removeChild(player);
+
+			
+			//addChild(level.layers[1].container);
+			removeChild(hud.container);	
+			removeChild(rulesPage);
 		}
 		
 		private function initLevel():void
@@ -107,8 +141,6 @@
 			foreground.setBehaviour(behaviour);
 
 			level.addGraphicLayer(background);
-			//level.addGraphicLayer(foreground);
-			
 			this._zapperLightning = new Zapper(this.player, this.level.boss);
 			
 			this.hud = new HeadsUpDisplay(player.playerData, this.level.boss.bossData);
@@ -169,7 +201,6 @@
 		private function updateHUD():void
 		{
 			hud.update();
-			//hud.weakness.field.text = Math.round(player.playerData.damageMultiplier) + "%";
 		}
 		
 		private function handleProjectileRequest(event:ProjectileRequestEvent):void
