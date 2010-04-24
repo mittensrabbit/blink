@@ -31,17 +31,17 @@
 			var tempXside:Number = this._playerRef.playerData.coords.x - this._bossX;
 			var tempYside:Number = this._playerRef.playerData.coords.y - this._bossY;
 			var hypotenuse:Number = Math.sqrt(tempXside * tempXside + tempYside * tempYside);
-			var ratio:Number;
-			
-			if (Math.abs(tempXside) > Math.abs(tempYside))
-				ratio = Math.abs(hypotenuse / tempXside);
-			else
-				ratio = Math.abs(hypotenuse / tempYside);
+			//var ratio:Number;
+			//
+			//if (Math.abs(tempXside) > Math.abs(tempYside))
+				//ratio = Math.abs(hypotenuse / tempXside);
+			//else
+				//ratio = Math.abs(hypotenuse / tempYside);
 			
 			this._zapper_mc.rotation = 0;
 			this._zapper_mc.height = hypotenuse;
 			
-			this._zapper_mc.width = 15;
+			this._zapper_mc.width = 30;
 			
 			var targetRotation = Math.atan2(tempYside, tempXside) * 180 / Math.PI;
 			targetRotation -= 90;
