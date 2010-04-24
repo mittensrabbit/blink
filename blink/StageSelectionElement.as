@@ -24,7 +24,8 @@
 			this.container = new Fla_StageSelectionElement();
 			this.name = name;
 			this.description = name;
-			
+			this.container.stars.mouseChildren = false;
+			this.container.stars.mouseEnabled = false;
 			this.container.bossName.text = name;
 			this.container.description.text = description;
 			
