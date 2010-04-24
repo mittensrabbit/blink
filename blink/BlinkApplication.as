@@ -120,11 +120,7 @@
 			removeChild(this._zapperLightning);
 			removeChild(player.ship);
 			removeChild(player);
-
-			
-			//addChild(level.layers[1].container);
 			removeChild(hud.container);	
-			removeChild(rulesPage);
 		}
 		
 		private function initLevel():void
