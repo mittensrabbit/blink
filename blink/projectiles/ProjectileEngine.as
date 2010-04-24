@@ -32,14 +32,15 @@
 			bullet.x = event.emitterData.coords.x;
 			bullet.y = event.emitterData.coords.y;
 			
-			var projectile:Projectile = new Projectile(bullet);
-			projectile.addBehaviour(new StraightProjectileMovement(projectile));
+			var projectile:Projectile = new Projectile(bullet,150);
+			projectile.addBehaviour(new StraightProjectileMovement(projectile,8));
 			projectile.addBehaviour(new RotateProjectileMovement(projectile,player.playerData));
 			
 			_projectiles.push(projectile);
 			container.addChild(projectile.container);
 		}
-		
+
+
 		public function handleEnterFrame(event:Event):void
 		{
 			for (var i:int = 0; i < _projectiles.length; i++)

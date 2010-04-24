@@ -4,6 +4,7 @@
 	import flash.display.MovieClip;
 	import flash.geom.Point;
 	import projectiles.IProjectileMovement;
+	import flash.display.Stage;
 	
 	/**
 	 * ...
@@ -14,28 +15,38 @@
 		public var container:MovieClip;
 		public var projectileMovement:IProjectileMovement;
 		public var behaviours:Array;
-		
-		public function Projectile(container:MovieClip) 
+		private var maxDuration:int;
+		private var currDuration:int;
+	
+		public function Projectile(container:MovieClip,maxDuration:int) 
 		{
 			this.container = container;
 			this.container.mouseChildren = false;
 			this.container.mouseEnabled = false;
 			this.projectileMovement = projectileMovement;
 			this.behaviours = new Array();
+			
+			this.maxDuration = maxDuration ;
+			this.currDuration = 0;
+			
+			
 		}
 		
 		public function addBehaviour(movement:IProjectileMovement):void
 		{
 			this.behaviours.push(movement);
+			
 		}
 		
 		public function checkEndCondition():Boolean
 		{
 			var point:Point = new Point(container.x, container.y);
-			if (point.x > 650 || point.x < 150 || point.y > 600 || point.y < 0)
+			if (point.x > 650 || point.x < 150 || point.y > 600 || point.y < 0 ||currDuration>=maxDuration)
 			{
 				return true;
 			}
+			
+			
 			return false;
 		}
 		
@@ -52,6 +63,8 @@
 			{
 				this.behaviours[i].update();
 			}
+			currDuration++;
+			
 		}
 	}
 	

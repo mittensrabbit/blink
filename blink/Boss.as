@@ -3,6 +3,8 @@
 	import flash.display.MovieClip;
 	import flash.events.Event;
 	import projectiles.Emitter;
+
+	import projectiles.EmitterTypes;
 	
 	/**
 	 * ...
@@ -28,7 +30,7 @@
 				if (mc is Fla_Emitter)
 				{
 					mc.visible = false;
-					var emitter:Emitter = new Emitter(mc);
+					var emitter:Emitter = new Emitter(mc,EmitterTypes.LASER);
 					emitters.push(emitter);
 				}
 			}

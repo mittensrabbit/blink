@@ -1,5 +1,7 @@
 ﻿package projectiles
 {
+	import projectiles.EmitterTypes;
+
 	import flash.display.MovieClip;
 	import flash.events.Event;
 	import flash.events.EventDispatcher;
@@ -18,14 +20,15 @@
 		private var cooldown:int;
 		private var maxCoolDown:int;
 
-		public function Emitter(emitter:MovieClip) 
+		public function Emitter(emitter:MovieClip,type:String) 
 		{
 			this.emitter = emitter;
 			this.emitterData = new EmitterData();
 			this.emitterData.coords = new Point(emitter.x, emitter.y);
 			this.emitterData.rotation = emitter.rotation;
+			this.emitterData.type = type;
 			this.cooldown = 0;
-			this.maxCoolDown = 4;
+			this.maxCoolDown = 30;
 		}
 		
 		public function handleEnterFrame(event:Event):void

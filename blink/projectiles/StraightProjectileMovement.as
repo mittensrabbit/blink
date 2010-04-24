@@ -8,12 +8,16 @@
 	 */
 	public class StraightProjectileMovement implements IProjectileMovement
 	{
+		public var expired:Boolean;
+		
 		private var velocity:int;
 		private var projectile:Projectile;
-		public function StraightProjectileMovement(projectile:Projectile) 
+
+		public function StraightProjectileMovement(projectile:Projectile, velocity:int) 
 		{
-			this.velocity = 8;
+			this.velocity = velocity;
 			this.projectile = projectile;
+			this.expired = false;
 		}
 		
 		public function update():void
