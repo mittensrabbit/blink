@@ -12,7 +12,7 @@
 	
 	/**
 	 * ...
-	 * @author DefaultUser (Tools -> Custom Arguments...)
+	 * @author Bread
 	 */
 	public class Emitter extends EventDispatcher
 	{
@@ -26,7 +26,6 @@
 			this.emitter = emitter;
 			this.emitterData = new EmitterData();
 			this.emitterData.coords = new Point(emitter.x+ shiftX, emitter.y + shiftY);
-			trace("emitx " + this.emitter.x + " this.emit.y " + this.emitter.y);
 			this.emitterData.rotation = emitter.rotation;
 			this.emitterData.type = type;
 			this.behaviour = new EmitterDefaultMovement(this.emitter,this.emitterData);
@@ -54,8 +53,14 @@
 			this.emitterData.coords.y += pyShift;
 		}
 		
+<<<<<<< HEAD
 
 		
+=======
+		public function rotateEmitter(pRotation:Number):void {
+			this.emitterData.rotation += pRotation;
+		}
+>>>>>>> 786451090b67d488ce3669162a991295447140c2
 	}
 	
 }

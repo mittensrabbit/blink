@@ -7,19 +7,14 @@
 	 * ...
 	 * @author Yuri Doubov
 	 */
-	public class GoatBoss extends Boss
+	public class AirSentryBoss extends Boss
 	{
-		public function GoatBoss(pBlinkApp:BlinkApplication, container:MovieClip) 
+		public function AirSentryBoss(pBlinkApp:BlinkApplication, container:MovieClip) 
 		{
-<<<<<<< HEAD
-			super(container);
-			this._boss_mc = new Fla_BossAirSentry();
-=======
 			super(pBlinkApp, container);
-			this._boss_mc = new Fla_BossGoat();
->>>>>>> 786451090b67d488ce3669162a991295447140c2
+			this._boss_mc = new Fla_BossAirSentry();
 			this.container.addChild(this._boss_mc);
-			this._boss_mc.x = 400 - (this._boss_mc.width / 2);
+			this._boss_mc.x = 400-(this._boss_mc.width/2);
 			
 			this._ymovement = 0;
 			initializeEmitters();
@@ -44,6 +39,6 @@
 			//if (this._boss_mc.rotation > 10 || this._boss_mc.rotation < -10)
 				//this._rotation = -this._rotation;
 		//}
+		
 	}
-
 }

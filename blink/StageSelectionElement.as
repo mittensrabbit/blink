@@ -24,6 +24,7 @@
 			this.container = new Fla_StageSelectionElement();
 			this.name = name;
 			this.description = name;
+			this.container.stars.gotoAndStop(1);
 			this.container.stars.mouseChildren = false;
 			this.container.stars.mouseEnabled = false;
 			this.container.bossName.text = name;
@@ -32,9 +33,15 @@
 			this.container.addEventListener(MouseEvent.CLICK, handleMouseClick);
 		}
 
+		public function refresh(levelResultData:LevelResultData):void
+		{
+			this.container.stars.gotoAndStop(levelResultData.ranking + 1);
+			this.container.bestTime.text = levelResultData.timeAsString;
+		}
+		
 		private function handleMouseClick(event:MouseEvent):void
 		{
-			container.dispatchEvent(new LevelRequestEvent());
+			container.dispatchEvent(new LevelRequestEvent(this.name));
 		}
 		
 	}

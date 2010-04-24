@@ -8,7 +8,7 @@
 	
 	/**
 	 * ...
-	 * @author DefaultUser (Tools -> Custom Arguments...)
+	 * @author Bread
 	 */
 	public class Boss 
 	{
@@ -17,13 +17,17 @@
 		protected var emitters:Array;
 		
 		public var _boss_mc:MovieClip;
-		protected var _movement:Number = 1;
+		protected var _xmovement:Number = 1;
+		protected var _ymovement:Number = 1;
+		protected var _rotation:Number = 1;
+		protected var _blinkApplicationRef:BlinkApplication 
 		
-		public function Boss(container:MovieClip) 
+		public function Boss(pBlinkApp:BlinkApplication, container:MovieClip) 
 		{
+			this._blinkApplicationRef = pBlinkApp;
 			this.emitters = new Array();
 			this.container = container;
-			this.bossData = new BossData();
+			this.bossData = new BossData(this);
 			//initializeEmitters();
 		}
 		
@@ -78,15 +82,27 @@
 		public function handleEnterFrame(event:Event):void
 		{
 			moveBoss();
+			rotateBoss();
 			for (var i:int = 0; i < emitters.length; i++)
 			{
 				var emitter:Emitter = emitters[i];
 				emitter.handleEnterFrame(event);
-				emitter.moveEmitter(this._movement, 0);
+				emitter.moveEmitter(this._xmovement, this._ymovement);
+				emitter.rotateEmitter(this._rotation);
 			}
+		}
+		
+		public function bossDead():void 
+		{
+			//container.removeChild(this.
+		}
+		
+		//OVERRIDE THOSE IN CHILD CLASSES
+		protected function moveBoss():void 
+		{
 			
 		}
-		protected function moveBoss():void 
+		protected function rotateBoss():void 
 		{
 			
 		}

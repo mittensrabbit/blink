@@ -19,6 +19,8 @@
 		public var playerData:PlayerData;
 		public var ship:MovieClip;
 		
+		private var _blinkAppRef:BlinkApplication;
+		
 		private static const BOOSTER_SPEED:Number = 7.0;
 		private var boosting_up:Boolean;
 		private var boosting_down:Boolean;
@@ -30,8 +32,9 @@
 		private var magnitude_left:Number;
 		private var magnitude_right:Number;
 		
-		public function Player() 
+		public function Player(pBlinkApp:BlinkApplication) 
 		{
+			this._blinkAppRef = pBlinkApp;
 			this.ship = new Fla_Ship();
 			this.playerData = new PlayerData();
 			magnitude_up = 0;
@@ -77,10 +80,13 @@
 		
 		public function handleMouseClick(event:MouseEvent):void
 		{
+			if (this._blinkAppRef.blinkCooldown > 0)
+				return;
 			blink(event);
+			this._blinkAppRef.blinkCooldown = 33;
 		}
 		
-		private function blink(event:MouseEvent):void
+		public function blink(event:MouseEvent):void
 		{
 			ship.alpha = 0.1;
 			playerData.damageMultiplier += 25;

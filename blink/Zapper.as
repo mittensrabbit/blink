@@ -43,7 +43,13 @@ package
 				return;
 			}
 			this._zapper_mc.visible = this._visible = true;
-			this._bossRef.bossData.health -= 20;
+			this._bossRef.bossData.health -= (1/hypotenuse) * 100;
+			if (this._bossRef.bossData.health < 0) {
+				this._bossRef.bossDead();
+				//this.removeChild(_zapper_mc);
+				//delete this.handleEnterFrame;
+				//delete this;
+			}
 			//var ratio:Number;
 			//
 			//if (Math.abs(tempXside) > Math.abs(tempYside))

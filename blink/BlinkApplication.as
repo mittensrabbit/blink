@@ -1,5 +1,7 @@
 ﻿package 
 {
+	import boss.AirSentryBoss;
+	import boss.TrollFaceBoss;
 	import events.LevelRequestEvent;
 	import flash.accessibility.Accessibility;
 	import flash.display.Bitmap;
@@ -12,6 +14,7 @@
 	import flash.filters.BlurFilter;
 	import flash.geom.Point;
 	import flash.text.TextField;
+	import flash.ui.Mouse;
 	import projectiles.ProjectileRequestEvent;
 	import projectiles.ProjectileEngine;
 	import renderer.GraphicElement;
@@ -35,7 +38,11 @@
 		private var projectileEngine:ProjectileEngine;
 		private var rulesPage:MovieClip;
 		
+		private var currentLevelResult:LevelResultData;
+		
 		private var _zapperLightning:Zapper;
+		
+		public var blinkCooldown:Number = 0;
 		
 		public function BlinkApplication() 
 		{
@@ -70,7 +77,6 @@
 			this.stageSelection.addBossSelection(new StageSelectionElement(BossName.TROLL_FACE, "Trolol!" ));
 			this.stageSelection.addBossSelection(new StageSelectionElement("Level 4", "This is my Element" ));
 
-			
 			this.addChild(stageSelection.container);
 			this.addChild(stageSelection.handles);
 		}
@@ -81,12 +87,10 @@
 			this.stageSelection.container.removeEventListener(LevelRequestEvent.LEVEL_REQUEST, handleLevelRequest);
 			removeChild(stageSelection.container);
 			removeChild(stageSelection.handles);
-			initLevel();
+			initLevel(event._eventName);
 			
-			
-			var levelResult:LevelResultData = new LevelResultData(new Date());
-			levelResult.setRanking(2);
-			bossResultScreen.refresh(levelResult);
+			trace("event " + event._eventName);
+
 			stage.focus = stage;
 		}
 		
@@ -98,12 +102,17 @@
 			stage.addEventListener(KeyboardEvent.KEY_DOWN, handleKeyboardDown);
 			stage.addEventListener(KeyboardEvent.KEY_UP, handleKeyboardUp);
 			stage.addEventListener(MouseEvent.MOUSE_DOWN, handleMouseClick);		
-			
+			currentLevelResult.startLevelTime();
 			//endLevel();
 		}
 		
-		private function endLevel()
+		public function endLevel()
 		{
+			
+			currentLevelResult.saveFinalTime();
+			bossResultScreen.refresh(currentLevelResult);
+			stageSelection.refreshMenu(currentLevelResult);
+				
 			//show results, update stage selection screen with new rank etc..
 			stage.removeEventListener(Event.ENTER_FRAME, mainGameLoop);
 			stage.removeEventListener(KeyboardEvent.KEY_DOWN, handleKeyboardDown);
@@ -117,19 +126,22 @@
 			removeChild(this._zapperLightning);
 			removeChild(player.ship);
 			removeChild(player);
-
-			
-			//addChild(level.layers[1].container);
 			removeChild(hud.container);	
-			removeChild(rulesPage);
 		}
 		
-		private function initLevel():void
+		private function initLevel(pBossType:String):void
 		{
-			this.player = new Player();		
+			this.player = new Player(this);		
 			this.level = new Level();
+			currentLevelResult = new LevelResultData(pBossType)
 			this.projectileEngine = new ProjectileEngine(player);
-			this.level.setBoss(new GoatBoss(new Fla_Boss()));
+			
+			if(pBossType == BossName.GOAT)
+				this.level.setBoss(new GoatBoss(this, new Fla_Boss()));
+			else if (pBossType == BossName.AIR_SENTRY)
+				this.level.setBoss(new AirSentryBoss(this, new Fla_Boss()));
+			else if (pBossType == BossName.TROLL_FACE)
+				this.level.setBoss(new TrollFaceBoss(this, new Fla_Boss()));
 			
 			level.boss.container.addEventListener(ProjectileRequestEvent.PROJECT_REQUEST, handleProjectileRequest);
 			this.projectileEngine.container.addEventListener(ProjectileRequestEvent.PROJECT_REQUEST, handleProjectileRequest);
@@ -191,6 +203,11 @@
 		
 		private function mainGameLoop(event:Event):void
 		{
+			this.blinkCooldown = (this.blinkCooldown < 1? 0:this.blinkCooldown - 1);
+			if (player.ship.hitTestObject(this.level.boss._boss_mc)) {
+				//player.blink();
+			}
+			
 			updateHUD();
 			player.handleEnterFrame(event);
 			level.render(event);
@@ -208,6 +225,9 @@
 		private function handleProjectileRequest(event:ProjectileRequestEvent):void
 		{
 			projectileEngine.addProjectile(event);
+		}
+		public function bossDead():void {
+			
 		}
 	}
 	

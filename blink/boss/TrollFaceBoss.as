@@ -7,21 +7,17 @@
 	 * ...
 	 * @author Yuri Doubov
 	 */
-	public class GoatBoss extends Boss
+	public class TrollFaceBoss extends Boss
 	{
-		public function GoatBoss(pBlinkApp:BlinkApplication, container:MovieClip) 
+		public function TrollFaceBoss(pBlinkApp:BlinkApplication, container:MovieClip) 
 		{
-<<<<<<< HEAD
-			super(container);
-			this._boss_mc = new Fla_BossAirSentry();
-=======
 			super(pBlinkApp, container);
-			this._boss_mc = new Fla_BossGoat();
->>>>>>> 786451090b67d488ce3669162a991295447140c2
+			this._boss_mc = new Fla_BossTrollFace();
 			this.container.addChild(this._boss_mc);
 			this._boss_mc.x = 400 - (this._boss_mc.width / 2);
 			
-			this._ymovement = 0;
+			this._rotation = 1;
+			
 			initializeEmitters();
 		}
 		
@@ -29,6 +25,18 @@
 			this._boss_mc.x += this._xmovement;
 			if (this._boss_mc.x > 450 || this._boss_mc.x < 250)
 				this._xmovement = -this._xmovement;
+				
+			this._ymovement = Math.random() * 6 - 3;
+			this._boss_mc.y += this._ymovement;
+			if (this._boss_mc.y < 0) {
+				this._ymovement = 0;
+				this._boss_mc.y -= this._ymovement;
+			}
+			else if (this._boss_mc.y > 400) {
+				this._ymovement = 0;
+				this._boss_mc.y -= this._ymovement;
+			}
+			
 		}
 		
 		public override function bossDead():void {
@@ -39,11 +47,12 @@
 			trace("VERY DEAD");
 		}
 		
-		//protected override function rotateBoss():void {
-			//this._boss_mc.rotation += this._rotation;
-			//if (this._boss_mc.rotation > 10 || this._boss_mc.rotation < -10)
-				//this._rotation = -this._rotation;
-		//}
+		protected override function rotateBoss():void {
+			this._boss_mc.rotation += this._rotation;
+			if (this._boss_mc.rotation > 10 || this._boss_mc.rotation < -10)
+				this._rotation = -this._rotation;
+		}
+		
 	}
 
 }
