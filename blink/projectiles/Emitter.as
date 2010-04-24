@@ -38,7 +38,7 @@
 			{
 				cooldown = 0;
 				// apply emitter behaviour + dispatch
-				emitterData.rotation += 1.0;
+				emitterData.rotation += 0.0;
 				emitter.dispatchEvent(new ProjectileRequestEvent(ProjectileRequestEvent.PROJECT_REQUEST, emitterData));	
 				
 			}

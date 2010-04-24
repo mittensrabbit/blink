@@ -42,6 +42,7 @@ package
 				return;
 			}
 			this._zapper_mc.visible = this._visible = true;
+			this._bossRef.bossData.health -= 20;
 			//var ratio:Number;
 			//
 			//if (Math.abs(tempXside) > Math.abs(tempYside))
