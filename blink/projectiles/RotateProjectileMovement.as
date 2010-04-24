@@ -1,12 +1,12 @@
 ﻿package projectiles 
 {
 	import flash.geom.Point;
-	
+	import flash.events.EventDispatcher;
 	/**
 	 * ...
 	 * @author DefaultUser (Tools -> Custom Arguments...)
 	 */
-	public class RotateProjectileMovement implements IProjectileMovement
+	public class RotateProjectileMovement extends EventDispatcher implements IProjectileMovement
 	{
 		private var projectile:Projectile;
 		private var playerData:PlayerData;

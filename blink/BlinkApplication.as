@@ -77,7 +77,9 @@
 			this.level = new Level();
 			this.projectileEngine = new ProjectileEngine(player);
 			this.level.setBoss(new Boss(new Fla_Boss()));
+			
 			level.boss.container.addEventListener(ProjectileRequestEvent.PROJECT_REQUEST, handleProjectileRequest);
+			this.projectileEngine.container.addEventListener(ProjectileRequestEvent.PROJECT_REQUEST, handleProjectileRequest);
 			
 			var background:GraphicLayer = createBackgroundLayer(new Fla_Background(), 0);
 			var behaviour:GraphicLayerScrollingBehaviour = new GraphicLayerScrollingBehaviour(4);

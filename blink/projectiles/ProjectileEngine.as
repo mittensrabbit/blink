@@ -1,5 +1,6 @@
 ﻿package projectiles
 {
+	import projectiles.FireworkProjectileMovement;
 	import flash.display.MovieClip;
 	import flash.events.Event;
 	import flash.geom.Point;
@@ -26,16 +27,30 @@
 		
 		public function addProjectile(event:ProjectileRequestEvent):void
 		{
+			
+			var projectile:Projectile;
 			// Determine bullet, assign behaviour
 			var bullet:MovieClip = new Fla_LaserProjectile();
+			
 			bullet.rotation = event.emitterData.rotation;
 			bullet.x = event.emitterData.coords.x;
 			bullet.y = event.emitterData.coords.y;
 			
-			var projectile:Projectile = new Projectile(bullet,150);
-			projectile.addBehaviour(new StraightProjectileMovement(projectile,8));
-			projectile.addBehaviour(new RotateProjectileMovement(projectile,player.playerData));
 			
+		
+			if (event.emitterData.type == EmitterTypes.EXPLOSION)
+			{
+				projectile = new Projectile(bullet, 30);
+				projectile.addBehaviour(new StraightProjectileMovement(projectile, 12));
+				//projectile.addBehaviour(new RotateProjectileMovement(projectile, player.playerData));
+			}
+			else
+			{
+				projectile = new Projectile(bullet, 90);
+				projectile.addBehaviour(new StraightProjectileMovement(projectile,8));
+				projectile.addBehaviour(new RotateProjectileMovement(projectile, player.playerData));
+				projectile.addEndBehaviour(new FireworkProjectileMovement(projectile,20,8));
+			}
 			_projectiles.push(projectile);
 			container.addChild(projectile.container);
 		}

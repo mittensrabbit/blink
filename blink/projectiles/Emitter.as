@@ -16,7 +16,7 @@
 	public class Emitter extends EventDispatcher
 	{
 		private var emitter:MovieClip;
-		private var emitterData:EmitterData
+		private var emitterData:EmitterData;
 		private var cooldown:int;
 		private var maxCoolDown:int;
 
@@ -27,8 +27,8 @@
 			this.emitterData.coords = new Point(emitter.x, emitter.y);
 			this.emitterData.rotation = emitter.rotation;
 			this.emitterData.type = type;
-			this.cooldown = 0;
-			this.maxCoolDown = 30;
+			this.cooldown = 89;
+			this.maxCoolDown = 90;
 		}
 		
 		public function handleEnterFrame(event:Event):void
@@ -39,7 +39,8 @@
 				cooldown = 0;
 				// apply emitter behaviour + dispatch
 				emitterData.rotation += 1.0;
-				emitter.dispatchEvent(new ProjectileRequestEvent(ProjectileRequestEvent.PROJECT_REQUEST,emitterData));		
+				emitter.dispatchEvent(new ProjectileRequestEvent(ProjectileRequestEvent.PROJECT_REQUEST, emitterData));	
+				
 			}
 		}
 		

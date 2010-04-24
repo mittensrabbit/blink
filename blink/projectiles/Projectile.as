@@ -15,8 +15,11 @@
 		public var container:MovieClip;
 		public var projectileMovement:IProjectileMovement;
 		public var behaviours:Array;
+		public var endBehaviour:IProjectileMovement;
 		private var maxDuration:int;
 		private var currDuration:int;
+		public var endCondition:Boolean;
+		
 	
 		public function Projectile(container:MovieClip,maxDuration:int) 
 		{
@@ -25,10 +28,10 @@
 			this.container.mouseEnabled = false;
 			this.projectileMovement = projectileMovement;
 			this.behaviours = new Array();
-			
+			this.endBehaviour = null;
 			this.maxDuration = maxDuration ;
 			this.currDuration = 0;
-			
+			this.endCondition = false;
 			
 		}
 		
@@ -38,15 +41,29 @@
 			
 		}
 		
+		public function addEndBehaviour(behaviour:IProjectileMovement):void
+		{
+			this.endBehaviour = behaviour;
+			
+		}
+		
 		public function checkEndCondition():Boolean
 		{
 			var point:Point = new Point(container.x, container.y);
-			if (point.x > 650 || point.x < 150 || point.y > 600 || point.y < 0 ||currDuration>=maxDuration)
+			if (point.x > 650 || point.x < 150 || point.y > 600 || point.y < 0 ||currDuration>=maxDuration || this.endCondition == true)
 			{
+				if(this.endBehaviour == null)
+					return true;
+				else
+				{
+					this.behaviours = new Array;
+					this.behaviours.push(this.endBehaviour);
+					this.endBehaviour = null;
+					return false;
+				}
 				return true;
+				
 			}
-			
-			
 			return false;
 		}
 		
