@@ -104,7 +104,7 @@
 			
 			this._zapperLightning = new Zapper(this.player, this.level.boss);
 			
-			this.hud = new HeadsUpDisplay(player.playerData);
+			this.hud = new HeadsUpDisplay(player.playerData, this.level.boss.bossData);
 			addChild(level.layers[0].container);
 			addChild(projectileEngine.container);
 			addChild(level.boss.container);

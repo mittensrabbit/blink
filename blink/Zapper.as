@@ -12,6 +12,7 @@ package
 		
 		private var _zapper_mc:MovieClip;
 		private var _length:Number;
+		private var _visible:Boolean;
 		
 		public function Zapper(pPlayer:Player, pBoss:Boss) {
 			this._bossRef = pBoss;
@@ -24,11 +25,11 @@ package
 		public function get length():Number {
 			return this._length;
 		}
+		public function get isVisible():Boolean {
+			return this._visible;
+		}
 		
 		public function handleEnterFrame():void {
-			
-			
-			
 			//trace("boss container" + this._bossRef.container.x + " y " + this._bossRef.container.y);
 			
 			this._zapper_mc.x = this._bossRef._boss_mc.x + this._bossRef._boss_mc.width / 2;
@@ -37,10 +38,10 @@ package
 			var tempYside:Number = this._playerRef.playerData.coords.y - this._zapper_mc.y;
 			var hypotenuse:Number = Math.sqrt(tempXside * tempXside + tempYside * tempYside);
 			if (hypotenuse > 250){
-				this._zapper_mc.visible = false;
+				this._zapper_mc.visible = this._visible = false;
 				return;
 			}
-			this._zapper_mc.visible = true;
+			this._zapper_mc.visible = this._visible = true;
 			//var ratio:Number;
 			//
 			//if (Math.abs(tempXside) > Math.abs(tempYside))
