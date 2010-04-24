@@ -6,9 +6,9 @@
 	 * ...
 	 * @author DefaultUser (Tools -> Custom Arguments...)
 	 */
-	public class RotateProjectile extends ProjectileMovement
+	public class RotateProjectile implements IProjectileMovement
 	{
-		
+		private var projectile:Projectile;
 		private var playerData:PlayerData;
 		private var turnRate:Number;
 		
@@ -20,7 +20,7 @@
 			this.turnRate = 10;
 		}
 		
-		public override function update():void
+		public  function update():void
 		{
 			
 
