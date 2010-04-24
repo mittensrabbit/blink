@@ -17,6 +17,8 @@
 	import renderer.GraphicElement;
 	import renderer.GraphicLayer;
 	import renderer.GraphicLayerScrollingBehaviour;
+	import boss.Boss;
+	import boss.GoatBoss;
 	
 	/**
 	 * ...
@@ -127,7 +129,7 @@
 			this.player = new Player();		
 			this.level = new Level();
 			this.projectileEngine = new ProjectileEngine(player);
-			this.level.setBoss(new Boss(new Fla_Boss()));
+			this.level.setBoss(new GoatBoss(new Fla_Boss()));
 			
 			level.boss.container.addEventListener(ProjectileRequestEvent.PROJECT_REQUEST, handleProjectileRequest);
 			this.projectileEngine.container.addEventListener(ProjectileRequestEvent.PROJECT_REQUEST, handleProjectileRequest);
