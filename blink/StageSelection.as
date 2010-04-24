@@ -13,6 +13,8 @@
 		public const OFFSET:int = 50;
 		
 		public var container:MovieClip;
+		public var buttons:MovieClip;
+		
 		private var handles:MovieClip
 		private var selections:Array;
 		private var upHandle:MovieClip;
@@ -27,6 +29,8 @@
 			this.container.addEventListener(Event.ENTER_FRAME, handleEnterFrame);
 			this.selections = new Array();
 			
+			this.buttons = new MovieClip();
+			
 			this.upHandle = new Fla_SelectionUp();
 			upHandle.addEventListener(MouseEvent.MOUSE_OVER, handleMouseOver);
 			upHandle.addEventListener(MouseEvent.MOUSE_OUT, handleMouseOut);
@@ -38,8 +42,8 @@
 			downHandle.addEventListener(MouseEvent.MOUSE_OVER, handleMouseOver);
 			downHandle.addEventListener(MouseEvent.MOUSE_OUT, handleMouseOut);
 			downHandle.y = 500;
-			this.container.addChild(upHandle);
-			this.container.addChild(downHandle);
+			this.buttons.addChild(upHandle);
+			this.buttons.addChild(downHandle);
 		}
 				
 		public function addBossSelection(selection:StageSelectionElement):void
@@ -74,10 +78,14 @@
 		
 		private function handleEnterFrame(event:Event):void
 		{
-			if (scrollingUp)
+			if (scrollingUp && this.container.y < 0  )//
+			{
 				this.container.y += 5;
-			if (scrollingDown)
+			}
+			if (scrollingDown ) // && this.container.y > OFFSET + StageSelectionElement.HEIGHT * selections.length * 4
+			{
 				this.container.y -= 5;
+			}
 		}
 	}
 	

@@ -16,7 +16,7 @@
 			this.projectile = projectile;
 		}
 		
-		public override function update():Point
+		public override function update():void
 		{
 			var rotation:int = projectile.container.rotation;
 			var point:Point = new Point(projectile.container.x, projectile.container.y);
@@ -26,7 +26,6 @@
 			
 			projectile.container.x = point.x + x;
 			projectile.container.y = point.y - y;
-			return point;
 		}
 
 	}

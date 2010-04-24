@@ -49,14 +49,17 @@
 			this.stageSelection.addBossSelection(new StageSelectionElement("Goat",  "Intro stage - learn to fly and blink!" ));
 			this.stageSelection.addBossSelection(new StageSelectionElement("Boss name lol", "Beware the missles!" ));
 			this.stageSelection.addBossSelection(new StageSelectionElement("ROFLCOPTER", "Trolol!" ));
+			this.stageSelection.addBossSelection(new StageSelectionElement("Level 4", "This is my Element" ));
 
 			this.addChild(stageSelection.container);
+			this.addChild(stageSelection.buttons);
 		}
 		
 		private function handleLevelRequest(event:LevelRequestEvent):void
 		{
 			this.stageSelection.container.removeEventListener(LevelRequestEvent.LEVEL_REQUEST, handleLevelRequest);
 			removeChild(stageSelection.container);
+			removeChild(stageSelection.buttons);
 			initLevel();
 			stage.focus = stage;
 		}
