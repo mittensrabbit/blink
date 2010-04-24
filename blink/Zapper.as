@@ -25,14 +25,11 @@ package
 		public function get length():Number {
 			return this._length;
 		}
-		public function get visible():Boolean {
+		public function get isVisible():Boolean {
 			return this._visible;
 		}
 		
 		public function handleEnterFrame():void {
-			
-			
-			
 			//trace("boss container" + this._bossRef.container.x + " y " + this._bossRef.container.y);
 			
 			this._zapper_mc.x = this._bossRef._boss_mc.x + this._bossRef._boss_mc.width / 2;
