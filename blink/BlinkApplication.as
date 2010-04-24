@@ -31,6 +31,7 @@
 		private var hud:HeadsUpDisplay;
 		private var level:Level;
 		private var projectileEngine:ProjectileEngine;
+		private var rulesPage:MovieClip;
 		
 		private var _zapperLightning:Zapper;
 		
@@ -40,6 +41,8 @@
 			this.titleScreen = new Title(new Fla_Title());
 			this.titleScreen.container.addEventListener(MouseEvent.CLICK, handleTitleClick);
 			this.bossResultScreen = new BossResultScreen();
+			this.rulesPage = new Fla_Rules(); 
+			this.rulesPage.addEventListener(MouseEvent.CLICK, startLevel);
 			this.addChild(titleScreen.container);
 			
 		}
@@ -60,6 +63,7 @@
 			this.addChild(stageSelection.handles);
 		}
 		
+		
 		private function handleLevelRequest(event:LevelRequestEvent):void
 		{
 			this.stageSelection.container.removeEventListener(LevelRequestEvent.LEVEL_REQUEST, handleLevelRequest);
@@ -71,18 +75,21 @@
 			var levelResult:LevelResultData = new LevelResultData(new Date());
 			levelResult.setRanking(2);
 			bossResultScreen.refresh(levelResult);
-			
-			//addChild(bossResultScreen.container);
 			stage.focus = stage;
+		}
+		
+		private function startLevel(event:MouseEvent):void
+		{
+			removeChild(rulesPage);
+			
+			stage.addEventListener(Event.ENTER_FRAME, mainGameLoop);
+			stage.addEventListener(KeyboardEvent.KEY_DOWN, handleKeyboardDown);
+			stage.addEventListener(KeyboardEvent.KEY_UP, handleKeyboardUp);
+			stage.addEventListener(MouseEvent.MOUSE_DOWN, handleMouseClick);		
 		}
 		
 		private function initLevel():void
 		{
-			stage.addEventListener(Event.ENTER_FRAME, mainGameLoop);
-			stage.addEventListener(KeyboardEvent.KEY_DOWN, handleKeyboardDown);
-			stage.addEventListener(KeyboardEvent.KEY_UP, handleKeyboardUp);
-			stage.addEventListener(MouseEvent.MOUSE_DOWN, handleMouseClick);
-			
 			this.player = new Player();		
 			this.level = new Level();
 			this.projectileEngine = new ProjectileEngine(player);
@@ -114,7 +121,8 @@
 
 			
 			//addChild(level.layers[1].container);
-			addChild(hud.container);		
+			addChild(hud.container);	
+			addChild(rulesPage);
 		}
 		
 		private function createBackgroundLayer(mc:MovieClip, alpha:Number):GraphicLayer
