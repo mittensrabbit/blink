@@ -3,7 +3,7 @@
 	import flash.display.DisplayObject;
 	import flash.display.MovieClip;
 	import flash.geom.Point;
-	import projectiles.ProjectileMovement;
+	import projectiles.IProjectileMovement;
 	
 	/**
 	 * ...
@@ -12,7 +12,7 @@
 	public class Projectile 
 	{
 		public var container:MovieClip;
-		public var projectileMovement:ProjectileMovement;
+		public var projectileMovement:IProjectileMovement;
 		public var behaviours:Array;
 		
 		public function Projectile(container:MovieClip) 
@@ -24,7 +24,7 @@
 			this.behaviours = new Array();
 		}
 		
-		public function addBehaviour(movement:ProjectileMovement):void
+		public function addBehaviour(movement:IProjectileMovement):void
 		{
 			this.behaviours.push(movement);
 		}

@@ -6,17 +6,17 @@
 	 * ...
 	 * @author DefaultUser (Tools -> Custom Arguments...)
 	 */
-	public class StraightProjectileMovement extends ProjectileMovement
+	public class StraightProjectileMovement implements IProjectileMovement
 	{
 		private var velocity:int;
-		
+		private var projectile:Projectile;
 		public function StraightProjectileMovement(projectile:Projectile) 
 		{
 			this.velocity = 8;
 			this.projectile = projectile;
 		}
 		
-		public override function update():void
+		public function update():void
 		{
 			var rotation:int = projectile.container.rotation;
 			var point:Point = new Point(projectile.container.x, projectile.container.y);
