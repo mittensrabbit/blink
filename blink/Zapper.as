@@ -14,12 +14,6 @@
 		
 		private var _zapper_mc:MovieClip;
 		
-		//private var _zapperLightning:Zapper;
-		//this._zapperLightning = new Zapper(this.player, 300, 200);
-			//addChild(this._zapperLightning);
-			//this._zapperLightning.handleEnterFrame();
-
-		
 		public function Zapper(pPlayer:Player, pBossX:Number, pBossY:Number) {
 			this._bossX = pBossX;
 			this._bossY = pBossY;

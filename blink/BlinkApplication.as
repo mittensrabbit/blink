@@ -31,6 +31,8 @@
 		private var level:Level;
 		private var projectileEngine:ProjectileEngine;
 		
+		private var _zapperLightning:Zapper;
+		
 		public function BlinkApplication() 
 		{
 			this.stage.quality = "MEDIUM";
@@ -88,12 +90,15 @@
 			level.addGraphicLayer(background);
 			//level.addGraphicLayer(foreground);
 			
+			this._zapperLightning = new Zapper(this.player, 300, 200);
+			
 			this.hud = new Fla_HUD();
 			addChild(level.layers[0].container);
 			addChild(projectileEngine.container);
 			addChild(level.boss.container);
 			addChild(player.ship);
 			addChild(player);
+			addChild(this._zapperLightning);
 			
 			//addChild(level.layers[1].container);
 			addChild(hud);		
@@ -136,6 +141,8 @@
 			level.render(event);
 			level.boss.handleEnterFrame(event);
 			projectileEngine.handleEnterFrame(event);
+			
+			this._zapperLightning.handleEnterFrame();
 		}
 		
 		private function updateHUD():void
