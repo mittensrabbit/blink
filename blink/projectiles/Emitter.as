@@ -11,7 +11,7 @@
 	
 	/**
 	 * ...
-	 * @author DefaultUser (Tools -> Custom Arguments...)
+	 * @author Bread
 	 */
 	public class Emitter extends EventDispatcher
 	{
@@ -25,7 +25,6 @@
 			this.emitter = emitter;
 			this.emitterData = new EmitterData();
 			this.emitterData.coords = new Point(emitter.x+ shiftX, emitter.y + shiftY);
-			trace("emitx " + this.emitter.x + " this.emit.y " + this.emitter.y);
 			this.emitterData.rotation = emitter.rotation;
 			this.emitterData.type = type;
 			this.cooldown = 89;
@@ -47,6 +46,10 @@
 		public function moveEmitter(pxShift:Number, pyShift:Number):void {
 			this.emitterData.coords.x += pxShift;
 			this.emitterData.coords.y += pyShift;
+		}
+		
+		public function rotateEmitter(pRotation:Number):void {
+			this.emitterData.rotation += pRotation;
 		}
 	}
 	

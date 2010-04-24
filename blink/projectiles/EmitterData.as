@@ -5,7 +5,7 @@
 	
 	/**
 	 * ...
-	 * @author DefaultUser (Tools -> Custom Arguments...)
+	 * @author Bread
 	 */
 	public class EmitterData 
 	{

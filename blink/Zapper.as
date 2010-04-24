@@ -1,5 +1,6 @@
 package
 {
+	import boss.Boss;
 	import flash.display.MovieClip;
 	import flash.display.Sprite;
 	/**
@@ -43,6 +44,9 @@ package
 			}
 			this._zapper_mc.visible = this._visible = true;
 			this._bossRef.bossData.health -= 20;
+			if (this._bossRef.bossData.health < 0) {
+				this._bossRef.bossDead();
+			}
 			//var ratio:Number;
 			//
 			//if (Math.abs(tempXside) > Math.abs(tempYside))

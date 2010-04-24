@@ -10,6 +10,8 @@
 	import flash.geom.Transform;
 	import renderer.GraphicElement;
 	import renderer.GraphicLayer;
+	import boss.Boss;
+	
 	
 	/**
 	 * ...
@@ -21,7 +23,6 @@
 		public var boss:Boss;
 		private var background:GraphicLayer;
 		private var foreground:GraphicLayer;
-		
 		public function Level() 
 		{
 			this.layers = new Array();

@@ -1,4 +1,4 @@
-﻿package
+﻿package boss
 {
 	import flash.geom.Point;
 	
@@ -11,17 +11,19 @@
 		public static var MAX_HEALTH = 10000;
 		public var health:int;
 		public var coords:Point;
-		public var damageMultiplier:Number;
+		//public var damageMultiplier:Number;
 		
-		public function BossData() 
-		{
+		private var _bossRef:Boss;
+		
+		public function BossData(pBoss:Boss) {
 			this.health = 10000;
 			this.coords = new Point(400, 500);
-			this.damageMultiplier = 100;
+			//this.damageMultiplier = 100;
+			
+			this._bossRef = pBoss;
 		}
 		
-		public function setCoordinates(coords:Point):void
-		{
+		public function setCoordinates(coords:Point):void {
 			this.coords.x = coords.x;
 			this.coords.y = coords.y;
 		}
