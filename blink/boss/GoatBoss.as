@@ -2,6 +2,7 @@
 {
 	import boss.Boss;
 	import flash.display.MovieClip;
+	import flash.events.Event;
 	/**
 	 * ...
 	 * @author Yuri Doubov
@@ -24,6 +25,11 @@
 			if (this._boss_mc.x > 450 || this._boss_mc.x < 250)
 				this._movement = -this._movement;
 		}
+		//protected override function rotateBoss():void {
+			//this._boss_mc.rotation += this._rotation;
+			//if (this._boss_mc.rotation > 10 || this._boss_mc.rotation < -10)
+				//this._rotation = -this._rotation;
+		//}
 	}
 
 }

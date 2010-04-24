@@ -8,7 +8,7 @@
 	
 	/**
 	 * ...
-	 * @author DefaultUser (Tools -> Custom Arguments...)
+	 * @author Bread
 	 */
 	public class Boss 
 	{
@@ -18,6 +18,7 @@
 		
 		public var _boss_mc:MovieClip;
 		protected var _movement:Number = 1;
+		protected var _rotation:Number = 1;
 		
 		public function Boss(container:MovieClip) 
 		{
@@ -78,15 +79,21 @@
 		public function handleEnterFrame(event:Event):void
 		{
 			moveBoss();
+			rotateBoss();
 			for (var i:int = 0; i < emitters.length; i++)
 			{
 				var emitter:Emitter = emitters[i];
 				emitter.handleEnterFrame(event);
 				emitter.moveEmitter(this._movement, 0);
+				emitter.rotateEmitter(this._rotation);
 			}
 			
 		}
 		protected function moveBoss():void 
+		{
+			
+		}
+		protected function rotateBoss():void 
 		{
 			
 		}
