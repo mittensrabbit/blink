@@ -102,7 +102,7 @@
 			level.addGraphicLayer(background);
 			//level.addGraphicLayer(foreground);
 			
-			this._zapperLightning = new Zapper(this.player, 300, 200);
+			this._zapperLightning = new Zapper(this.player, this.level.boss);
 			
 			this.hud = new HeadsUpDisplay(player.playerData);
 			addChild(level.layers[0].container);
