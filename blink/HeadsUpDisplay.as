@@ -1,5 +1,6 @@
 ﻿package 
 {
+	import boss.BossData;
 	import flash.display.MovieClip;
 	
 	/**
