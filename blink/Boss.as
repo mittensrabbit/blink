@@ -37,7 +37,7 @@
 				if (mc is Fla_Emitter)
 				{
 					//mc.visible = false;
-					var emitter:Emitter = new Emitter(mc, EmitterTypes.LASER, this._boss_mc.x, this._boss_mc.y);
+					var emitter:Emitter = new Emitter(mc, EmitterTypes.MISSILE_RED, this._boss_mc.x, this._boss_mc.y);
 					trace("this.bossx" + this._boss_mc.x +  " bossy" + this._boss_mc.y);
 					emitters.push(emitter);
 				}
