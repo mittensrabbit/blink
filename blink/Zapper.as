@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+<<<<<<< .merge_file_nySr9e
 ﻿package
 {
 	import flash.display.MovieClip;
@@ -102,5 +102,5 @@
 			this._zapper_mc.rotation = targetRotation;
 		}
 	}
->>>>>>> 6664a1c9901dd7c81c9581fa38a3e92e45e45c22
+>>>>>>> .merge_file_omID1L
 }
