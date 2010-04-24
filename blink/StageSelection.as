@@ -67,6 +67,18 @@
 				this.display.y = -StageSelectionElement.HEIGHT *  (selections.length -3);
 
 		}
+		
+		public function refreshMenu(levelResultData:LevelResultData):void
+		{
+			for (var i:int = 0; i < selections.length; i++)
+			{
+				var selection:StageSelectionElement = selections[i];
+				if (selection.name == levelResultData.levelName)
+				{
+					selection.refresh(levelResultData);
+				}
+			}
+		}
 	}
 	
 }

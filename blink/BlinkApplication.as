@@ -68,7 +68,10 @@
 			this.stageSelection.addBossSelection(new StageSelectionElement(BossName.TROLL_FACE, "Trolol!" ));
 			this.stageSelection.addBossSelection(new StageSelectionElement("Level 4", "This is my Element" ));
 
-			
+			var date:Date = new Date();
+			var testData:LevelResultData = new LevelResultData(BossName.GOAT, date);
+			testData.ranking = 4;
+			stageSelection.refreshMenu(testData);
 			this.addChild(stageSelection.container);
 			this.addChild(stageSelection.handles);
 		}
@@ -82,7 +85,7 @@
 			initLevel();
 			
 			
-			var levelResult:LevelResultData = new LevelResultData(new Date());
+			var levelResult:LevelResultData = new LevelResultData(BossName.GOAT, new Date());
 			levelResult.setRanking(2);
 			bossResultScreen.refresh(levelResult);
 			stage.focus = stage;
