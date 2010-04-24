@@ -46,6 +46,9 @@ package
 			this._bossRef.bossData.health -= 20;
 			if (this._bossRef.bossData.health < 0) {
 				this._bossRef.bossDead();
+				//this.removeChild(_zapper_mc);
+				//delete this.handleEnterFrame;
+				//delete this;
 			}
 			//var ratio:Number;
 			//

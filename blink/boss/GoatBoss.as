@@ -9,10 +9,9 @@
 	 */
 	public class GoatBoss extends Boss
 	{
-		
-		public function GoatBoss(container:MovieClip) 
+		public function GoatBoss(pBlinkApp:BlinkApplication, container:MovieClip) 
 		{
-			super(container);
+			super(pBlinkApp, container);
 			this._boss_mc = new Fla_BossGoat();
 			this.container.addChild(this._boss_mc);
 			this._boss_mc.x = 350;
@@ -27,7 +26,10 @@
 		}
 		
 		public override function bossDead():void {
-			container.removeChild(this._boss_mc);
+			super.bossDead();
+			this.container.removeChild(this._boss_mc);
+			this._blinkApplicationRef.endLevel();
+			//delete this;
 			trace("VERY DEAD");
 		}
 		
