@@ -43,7 +43,7 @@
 		
 		private function handleMouseClick(event:MouseEvent):void
 		{
-			container.dispatchEvent(new LevelRequestEvent());
+			container.dispatchEvent(new LevelRequestEvent(this.name));
 		}
 		
 	}

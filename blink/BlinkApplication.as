@@ -1,5 +1,7 @@
 ﻿package 
 {
+	import boss.AirSentryBoss;
+	import boss.TrollFaceBoss;
 	import events.LevelRequestEvent;
 	import flash.accessibility.Accessibility;
 	import flash.display.Bitmap;
@@ -84,8 +86,9 @@
 			this.stageSelection.container.removeEventListener(LevelRequestEvent.LEVEL_REQUEST, handleLevelRequest);
 			removeChild(stageSelection.container);
 			removeChild(stageSelection.handles);
-			initLevel();
+			initLevel(event._eventName);
 			
+			trace("event " + event._eventName);
 			
 			var levelResult:LevelResultData = new LevelResultData(BossName.GOAT, new Date());
 			levelResult.setRanking(2);
@@ -123,12 +126,18 @@
 			removeChild(hud.container);	
 		}
 		
-		private function initLevel():void
+		private function initLevel(pBossType:String):void
 		{
 			this.player = new Player();		
 			this.level = new Level();
 			this.projectileEngine = new ProjectileEngine(player);
-			this.level.setBoss(new GoatBoss(this, new Fla_Boss()));
+			
+			if(pBossType == BossName.GOAT)
+				this.level.setBoss(new GoatBoss(this, new Fla_Boss()));
+			else if (pBossType == BossName.AIR_SENTRY)
+				this.level.setBoss(new AirSentryBoss(this, new Fla_Boss()));
+			else if (pBossType == BossName.TROLL_FACE)
+				this.level.setBoss(new TrollFaceBoss(this, new Fla_Boss()));
 			
 			level.boss.container.addEventListener(ProjectileRequestEvent.PROJECT_REQUEST, handleProjectileRequest);
 			this.projectileEngine.container.addEventListener(ProjectileRequestEvent.PROJECT_REQUEST, handleProjectileRequest);
