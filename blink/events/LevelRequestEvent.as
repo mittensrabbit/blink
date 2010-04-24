@@ -9,9 +9,12 @@
 	public class LevelRequestEvent extends Event
 	{
 		public static const LEVEL_REQUEST:String = "level_request";
-		public function LevelRequestEvent() 
+		
+		public var _eventName:String;
+		public function LevelRequestEvent(pEventName:String) 
 		{
 			super(LEVEL_REQUEST, true);
+			this._eventName = pEventName;
 		}
 		
 	}
