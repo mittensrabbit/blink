@@ -1,5 +1,6 @@
 ﻿package projectiles
 {
+	import projectiles.EmitterSprinklerMovement;
 	import projectiles.EmitterTypes;
 
 	import flash.display.MovieClip;
@@ -17,9 +18,9 @@
 	{
 		private var emitter:MovieClip;
 		private var emitterData:EmitterData;
-		private var cooldown:int;
-		private var maxCoolDown:int;
-
+		private var behaviour:IEmitterMovement;
+		
+		
 		public function Emitter(emitter:MovieClip,type:String, shiftX:Number, shiftY:Number) 
 		{
 			this.emitter = emitter;
@@ -28,26 +29,33 @@
 			trace("emitx " + this.emitter.x + " this.emit.y " + this.emitter.y);
 			this.emitterData.rotation = emitter.rotation;
 			this.emitterData.type = type;
-			this.cooldown = 89;
-			this.maxCoolDown = 90;
+			this.behaviour = new EmitterDefaultMovement(this.emitter,this.emitterData);
+			//this.behaviour = new EmitterSprinklerMovement(this.emitter,this.emitterData,180,10)
+			
 		}
 		
 		public function handleEnterFrame(event:Event):void {
-			cooldown += 1;
-			if (cooldown >= maxCoolDown)
-			{
-				cooldown = 0;
-				// apply emitter behaviour + dispatch
-				emitterData.rotation += 0.0;
-				emitter.dispatchEvent(new ProjectileRequestEvent(ProjectileRequestEvent.PROJECT_REQUEST, emitterData));	
-				
-			}
+			
+			
+			//cooldown += 1;
+			//if (cooldown >= maxCoolDown)
+			//{
+				//cooldown = 0;
+				 //apply emitter behaviour + dispatch
+				//emitterData.rotation += 0.0;
+				//emitter.dispatchEvent(new ProjectileRequestEvent(ProjectileRequestEvent.PROJECT_REQUEST, emitterData));	
+				//
+			//}
+			this.behaviour.update();
 		}
 		
 		public function moveEmitter(pxShift:Number, pyShift:Number):void {
 			this.emitterData.coords.x += pxShift;
 			this.emitterData.coords.y += pyShift;
 		}
+		
+
+		
 	}
 	
 }

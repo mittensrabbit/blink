@@ -12,7 +12,7 @@
 		public function GoatBoss(container:MovieClip) 
 		{
 			super(container);
-			this._boss_mc = new Fla_BossGoat();
+			this._boss_mc = new Fla_BossAirSentry();
 			this.container.addChild(this._boss_mc);
 			this._boss_mc.x = 350;
 			

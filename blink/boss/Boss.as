@@ -44,7 +44,7 @@
 				{
 					//mc.visible = false;
 
-					emitter = new Emitter(mc, EmitterTypes.EXPLOSION_BULLET, this._boss_mc.x, this._boss_mc.y);
+					emitter = new Emitter(mc, EmitterTypes.LASER, this._boss_mc.x, this._boss_mc.y);
 
 					emitters.push(emitter);
 				}
@@ -52,7 +52,7 @@
 				{
 					//mc.visible = false;
 
-					emitter = new Emitter(mc, EmitterTypes.EXPLOSION_CLOUD, this._boss_mc.x, this._boss_mc.y);
+					emitter = new Emitter(mc, EmitterTypes.MISSILE_YELLOW, this._boss_mc.x, this._boss_mc.y);
 
 					emitters.push(emitter);
 				}
