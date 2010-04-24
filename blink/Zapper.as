@@ -7,37 +7,47 @@ package
 	 * @author Yuri Doubov
 	 */
 	public class Zapper extends Sprite {
-		private var _bossX:Number;
-		private var _bossY:Number;
-		
 		private var _playerRef:Player;
+		private var _bossRef:Boss;
 		
 		private var _zapper_mc:MovieClip;
+		private var _length:Number;
 		
-		public function Zapper(pPlayer:Player, pBossX:Number, pBossY:Number) {
-			this._bossX = pBossX;
-			this._bossY = pBossY;
-			
+		public function Zapper(pPlayer:Player, pBoss:Boss) {
+			this._bossRef = pBoss;
 			this._playerRef = pPlayer;
 			
 			this._zapper_mc = new Fla_Zapp();
 			addChild(_zapper_mc);
 		}
 		
+		public function get length():Number {
+			return this._length;
+		}
+		
 		public function handleEnterFrame():void {
-			this._zapper_mc.x = this._bossX;
-			this._zapper_mc.y = this._bossY;
 			
-			var tempXside:Number = this._playerRef.playerData.coords.x - this._bossX;
-			var tempYside:Number = this._playerRef.playerData.coords.y - this._bossY;
+			
+			
+			//trace("boss container" + this._bossRef.container.x + " y " + this._bossRef.container.y);
+			
+			this._zapper_mc.x = this._bossRef._boss_mc.x + this._bossRef._boss_mc.width / 2;
+			this._zapper_mc.y = this._bossRef._boss_mc.y + this._bossRef._boss_mc.height / 2;
+			var tempXside:Number = this._playerRef.playerData.coords.x - this._zapper_mc.x;
+			var tempYside:Number = this._playerRef.playerData.coords.y - this._zapper_mc.y;
 			var hypotenuse:Number = Math.sqrt(tempXside * tempXside + tempYside * tempYside);
+			if (hypotenuse > 250){
+				this._zapper_mc.visible = false;
+				return;
+			}
+			this._zapper_mc.visible = true;
 			//var ratio:Number;
 			//
 			//if (Math.abs(tempXside) > Math.abs(tempYside))
 				//ratio = Math.abs(hypotenuse / tempXside);
 			//else
 				//ratio = Math.abs(hypotenuse / tempYside);
-			
+			this._length = hypotenuse;
 			this._zapper_mc.rotation = 0;
 			this._zapper_mc.height = hypotenuse;
 			

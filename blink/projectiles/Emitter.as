@@ -20,19 +20,19 @@
 		private var cooldown:int;
 		private var maxCoolDown:int;
 
-		public function Emitter(emitter:MovieClip,type:String) 
+		public function Emitter(emitter:MovieClip,type:String, shiftX:Number, shiftY:Number) 
 		{
 			this.emitter = emitter;
 			this.emitterData = new EmitterData();
-			this.emitterData.coords = new Point(emitter.x, emitter.y);
+			this.emitterData.coords = new Point(emitter.x+ shiftX, emitter.y + shiftY);
+			trace("emitx " + this.emitter.x + " this.emit.y " + this.emitter.y);
 			this.emitterData.rotation = emitter.rotation;
 			this.emitterData.type = type;
 			this.cooldown = 89;
 			this.maxCoolDown = 90;
 		}
 		
-		public function handleEnterFrame(event:Event):void
-		{
+		public function handleEnterFrame(event:Event):void {
 			cooldown += 1;
 			if (cooldown >= maxCoolDown)
 			{
@@ -44,6 +44,10 @@
 			}
 		}
 		
+		public function moveEmitter(pxShift:Number, pyShift:Number):void {
+			this.emitterData.coords.x += pxShift;
+			this.emitterData.coords.y += pyShift;
+		}
 	}
 	
 }
