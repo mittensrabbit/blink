@@ -28,7 +28,7 @@
 			else
 				this.turnRate = turnRate;*/
 				
-				this.turnRate = .7;
+				this.turnRate = 5;
 		}
 		
 		public  function update():void
@@ -51,7 +51,7 @@
 			else if (diff < -180)
 				targetRotation -= 360;
 				
-			projectile.container.rotation += ((targetRotation - rotation) * turnRate)
+			projectile.container.rotation += ((targetRotation - rotation) / turnRate)
 			
 		}
 

@@ -38,7 +38,9 @@
 				if (mc is Fla_Emitter)
 				{
 					//mc.visible = false;
+
 					var emitter:Emitter = new Emitter(mc, EmitterTypes.LASER, this._boss_mc.x, this._boss_mc.y);
+
 					emitters.push(emitter);
 				}
 			}

@@ -16,12 +16,14 @@
 		public var projectileMovement:IProjectileMovement;
 		public var behaviours:Array;
 		public var endBehaviour:IProjectileMovement;
+		public var damage:int;
+		
+		
+		private var endCondition:Boolean;
 		private var maxDuration:int;
 		private var currDuration:int;
-		public var endCondition:Boolean;
-		
 	
-		public function Projectile(container:MovieClip,maxDuration:int) 
+		public function Projectile(container:MovieClip,maxDuration:int, damage:int) 
 		{
 			this.container = container;
 			this.container.mouseChildren = false;
@@ -32,7 +34,7 @@
 			this.maxDuration = maxDuration ;
 			this.currDuration = 0;
 			this.endCondition = false;
-			
+			this.damage = damage;
 		}
 		
 		public function addBehaviour(movement:IProjectileMovement):void
