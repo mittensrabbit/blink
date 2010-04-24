@@ -1,5 +1,7 @@
 ﻿package 
 {
+	import events.LevelRequestEvent;
+	import flash.accessibility.Accessibility;
 	import flash.display.Bitmap;
 	import flash.display.BitmapData;
 	import flash.display.MovieClip;
@@ -22,6 +24,8 @@
 	 */
 	public class BlinkApplication extends Sprite
 	{
+		private var titleScreen:Title;
+		private var stageSelection:StageSelection;
 		private var player:Player;
 		private var hud:MovieClip;
 		private var level:Level;
@@ -30,6 +34,35 @@
 		public function BlinkApplication() 
 		{
 			this.stage.quality = "MEDIUM";
+			this.titleScreen = new Title(new Fla_Title());
+			this.titleScreen.container.addEventListener(MouseEvent.CLICK, handleTitleClick);
+			this.addChild(titleScreen.container);
+			
+		}
+		
+		private function handleTitleClick(event:MouseEvent):void
+		{
+			removeChild(titleScreen.container);
+			this.stageSelection = new StageSelection();
+			this.stageSelection.container.addEventListener(LevelRequestEvent.LEVEL_REQUEST, handleLevelRequest);
+			
+			this.stageSelection.addBossSelection(new StageSelectionElement("Goat",  "Intro stage - learn to fly and blink!" ));
+			this.stageSelection.addBossSelection(new StageSelectionElement("Boss name lol", "Beware the missles!" ));
+			this.stageSelection.addBossSelection(new StageSelectionElement("ROFLCOPTER", "Trolol!" ));
+
+			this.addChild(stageSelection.container);
+		}
+		
+		private function handleLevelRequest(event:LevelRequestEvent):void
+		{
+			this.stageSelection.container.removeEventListener(LevelRequestEvent.LEVEL_REQUEST, handleLevelRequest);
+			removeChild(stageSelection.container);
+			initLevel();
+			stage.focus = stage;
+		}
+		
+		private function initLevel():void
+		{
 			stage.addEventListener(Event.ENTER_FRAME, mainGameLoop);
 			stage.addEventListener(KeyboardEvent.KEY_DOWN, handleKeyboardDown);
 			stage.addEventListener(KeyboardEvent.KEY_UP, handleKeyboardUp);
@@ -60,7 +93,7 @@
 			addChild(player);
 			
 			//addChild(level.layers[1].container);
-			addChild(hud);
+			addChild(hud);		
 		}
 		
 		private function createBackgroundLayer(mc:MovieClip, alpha:Number):GraphicLayer
