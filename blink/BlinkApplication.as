@@ -37,6 +37,8 @@
 		private var projectileEngine:ProjectileEngine;
 		private var rulesPage:MovieClip;
 		
+		private var currentLevelResult:LevelResultData;
+		
 		private var _zapperLightning:Zapper;
 		
 		public function BlinkApplication() 
@@ -72,10 +74,6 @@
 			this.stageSelection.addBossSelection(new StageSelectionElement(BossName.TROLL_FACE, "Trolol!" ));
 			this.stageSelection.addBossSelection(new StageSelectionElement("Level 4", "This is my Element" ));
 
-			var date:Date = new Date();
-			var testData:LevelResultData = new LevelResultData(BossName.GOAT, date);
-			testData.ranking = 4;
-			stageSelection.refreshMenu(testData);
 			this.addChild(stageSelection.container);
 			this.addChild(stageSelection.handles);
 		}
@@ -89,10 +87,7 @@
 			initLevel(event._eventName);
 			
 			trace("event " + event._eventName);
-			
-			var levelResult:LevelResultData = new LevelResultData(BossName.GOAT, new Date());
-			levelResult.setRanking(2);
-			bossResultScreen.refresh(levelResult);
+
 			stage.focus = stage;
 		}
 		
@@ -104,12 +99,17 @@
 			stage.addEventListener(KeyboardEvent.KEY_DOWN, handleKeyboardDown);
 			stage.addEventListener(KeyboardEvent.KEY_UP, handleKeyboardUp);
 			stage.addEventListener(MouseEvent.MOUSE_DOWN, handleMouseClick);		
-			
+			currentLevelResult.startLevelTime();
 			//endLevel();
 		}
 		
 		public function endLevel()
 		{
+			
+			currentLevelResult.saveFinalTime();
+			bossResultScreen.refresh(currentLevelResult);
+			stageSelection.refreshMenu(currentLevelResult);
+				
 			//show results, update stage selection screen with new rank etc..
 			stage.removeEventListener(Event.ENTER_FRAME, mainGameLoop);
 			stage.removeEventListener(KeyboardEvent.KEY_DOWN, handleKeyboardDown);
@@ -130,6 +130,7 @@
 		{
 			this.player = new Player();		
 			this.level = new Level();
+			currentLevelResult = new LevelResultData(pBossType)
 			this.projectileEngine = new ProjectileEngine(player);
 			
 			if(pBossType == BossName.GOAT)

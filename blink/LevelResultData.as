@@ -8,25 +8,32 @@
 	public class LevelResultData 
 	{
 		public var levelName:String;
-		private var startTime:Date
+		private var nStart:Number
 		public var finalTime:Date;
 		public var ranking:int;
+		public var timeAsString:String;
 		
-		public function LevelResultData(levelName:String, startTime:Date) 
+		public function LevelResultData(levelName:String) 
 		{
 			this.levelName = levelName;
 			this.finalTime = new Date();
-			this.startTime = startTime;
 			this.ranking = ranking = 0;
-			saveFinalTime();
+		}
+		
+		public function startLevelTime():void
+		{
+			nStart = new Date().time
+			timeAsString = "";
 		}
 		
 		public function saveFinalTime():void
 		{
-			var now:Date = new Date();
-			finalTime.seconds = Math.abs(startTime.getSeconds() - now.getSeconds());
-			finalTime.minutes = Math.abs(startTime.getMinutes() - now.getMinutes());
-			finalTime.hours = Math.abs(startTime.getHours() - now.getHours());
+			var nMillisElapsed:Number = new Date().time - nStart;	
+			var strTime:String = Math.floor(nMillisElapsed / (1000 * 60 * 60)) + "::" + 
+			(Math.floor(nMillisElapsed / (1000 * 60)) % 60) + "::" + 
+			(Math.floor(nMillisElapsed / (1000)) % 60);
+
+			timeAsString = strTime;
 		}
 		
 		public function setRanking(ranking:int):void
