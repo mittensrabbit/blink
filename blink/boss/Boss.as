@@ -17,7 +17,8 @@
 		protected var emitters:Array;
 		
 		public var _boss_mc:MovieClip;
-		protected var _movement:Number = 1;
+		protected var _xmovement:Number = 1;
+		protected var _ymovement:Number = 1;
 		protected var _rotation:Number = 1;
 		protected var _blinkApplicationRef:BlinkApplication 
 		
@@ -86,7 +87,7 @@
 			{
 				var emitter:Emitter = emitters[i];
 				emitter.handleEnterFrame(event);
-				emitter.moveEmitter(this._movement, 0);
+				emitter.moveEmitter(this._xmovement, this._ymovement);
 				emitter.rotateEmitter(this._rotation);
 			}
 		}
