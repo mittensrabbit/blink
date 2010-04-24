@@ -17,7 +17,18 @@
 			
 			this.projectile = projectile;
 			this.playerData = playerData;
-			this.turnRate = 10;
+			/*if (turnrate > 1 )
+			{
+				this.turnRate = 1;
+			}
+			if (turnrate < 0)
+			{
+				this.turnRate = 0;
+			}
+			else
+				this.turnRate = turnRate;*/
+				
+				this.turnRate = .7;
 		}
 		
 		public  function update():void
@@ -40,7 +51,7 @@
 			else if (diff < -180)
 				targetRotation -= 360;
 				
-			projectile.container.rotation += ((targetRotation - rotation) / turnRate)
+			projectile.container.rotation += ((targetRotation - rotation) * turnRate)
 			
 		}
 

@@ -30,7 +30,7 @@
 				if (mc is Fla_Emitter)
 				{
 					mc.visible = false;
-					var emitter:Emitter = new Emitter(mc,EmitterTypes.LASER);
+					var emitter:Emitter = new Emitter(mc,EmitterTypes.MISSILE_RED);
 					emitters.push(emitter);
 				}
 			}
