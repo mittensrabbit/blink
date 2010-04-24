@@ -8,7 +8,13 @@
 	{
 		
 		public static const LASER:String = "laser";
-		public static const MISSLE:String = "missle";
+		
+		
+		public static const MISSILE:String = "missIle";
+		
+		
+		public static const EXPLOSION:String = "explosion";
+		
 		
 		
 	}

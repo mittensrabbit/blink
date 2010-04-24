@@ -6,7 +6,7 @@
 	 * ...
 	 * @author DefaultUser (Tools -> Custom Arguments...)
 	 */
-	public interface IProjectileMovement 
+	public interface  IProjectileMovement
 	{
 			
 		

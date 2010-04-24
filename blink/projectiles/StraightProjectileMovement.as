@@ -1,12 +1,12 @@
 ﻿package projectiles 
 {
 	import flash.geom.Point;
-	
+	import flash.events.EventDispatcher;
 	/**
 	 * ...
 	 * @author DefaultUser (Tools -> Custom Arguments...)
 	 */
-	public class StraightProjectileMovement implements IProjectileMovement
+	public class StraightProjectileMovement extends EventDispatcher implements IProjectileMovement
 	{
 		public var expired:Boolean;
 		
