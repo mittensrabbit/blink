@@ -62,7 +62,7 @@
 			{	
 				
 				cooldown = 0;
-				trace(this.curRotation);
+				//trace(this.curRotation);
 				if (this.curRotation >= Math.abs(this.rotation) )
 				{
 					this.curRotation = 0;

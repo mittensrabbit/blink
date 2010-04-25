@@ -20,11 +20,13 @@
 			this.movieClip = pMC;
 			
 			this._eventDispatcher = new EventDispatcher(this);
-			this.timer = new Timer(duration, 1);
+			this.timer = new Timer(duration * 1000, 1);
+			//trace(timer.delay + " iunno " + this.timer.);
 			this.timer.addEventListener(TimerEvent.TIMER_COMPLETE, this.particleDead);
+			this.timer.start();
 		}
 		
-		private function particleDead():void {
+		private function particleDead(e:TimerEvent):void {
 			this.timer.stop();
 			this.dispatchEvent(new TimerEvent(TimerEvent.TIMER_COMPLETE));
 		}
