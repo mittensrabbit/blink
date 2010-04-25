@@ -53,12 +53,9 @@
 			}
 			else if (event.emitterData.type == EmitterTypes.MISSILE_BLUE)
 			{
-<<<<<<< HEAD
+
 				bullet = new Fla_RedMissle();
-=======
-				bullet = new Fla_LaserProjectile();
 				bullet.hitTest.visible = false;
->>>>>>> 786451090b67d488ce3669162a991295447140c2
 				projectile = new Projectile(bullet, 90,10);
 				projectile.addBehaviour(new StraightProjectileMovement(projectile, 10));
 				projectile.addBehaviour(new RotateProjectileMovement(projectile, player.playerData));
@@ -67,12 +64,8 @@
 			}
 			else if (event.emitterData.type == EmitterTypes.MISSILE_YELLOW)
 			{
-<<<<<<< HEAD
 				bullet = new Fla_RedMissle();
-=======
-				bullet = new Fla_LaserProjectile();
 				bullet.hitTest.visible = false;
->>>>>>> 786451090b67d488ce3669162a991295447140c2
 				projectile = new Projectile(bullet, 90,10);
 				projectile.addBehaviour(new StraightProjectileMovement(projectile, 10));
 				projectile.addBehaviour(new RotateProjectileMovement(projectile, player.playerData));

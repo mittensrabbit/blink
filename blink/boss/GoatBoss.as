@@ -11,13 +11,9 @@
 	{
 		public function GoatBoss(pBlinkApp:BlinkApplication, container:MovieClip) 
 		{
-<<<<<<< HEAD
-			super(container);
-			this._boss_mc = new Fla_BossAirSentry();
-=======
+
 			super(pBlinkApp, container);
 			this._boss_mc = new Fla_BossGoat();
->>>>>>> 786451090b67d488ce3669162a991295447140c2
 			this.container.addChild(this._boss_mc);
 			this._boss_mc.x = 400 - (this._boss_mc.width / 2);
 			
