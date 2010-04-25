@@ -8,14 +8,14 @@
 	 */
 	public class PlayerData 
 	{
-		public static var MAX_HEALTH = 20;
+		public static var MAX_HEALTH = 80;
 		public var health:int;
 		public var coords:Point;
 		public var damageMultiplier:Number;
 		
 		public function PlayerData() 
 		{
-			this.health = 20;
+			this.health = 80;
 			this.coords = new Point(400, 500);
 			this.damageMultiplier = 100;
 		}
