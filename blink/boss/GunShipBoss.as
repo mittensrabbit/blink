@@ -24,7 +24,7 @@
 			this.container.addChild(this._boss_mc);
 			this._boss_mc.x = 400-(this._boss_mc.width/2);
 			
-			this.emitterYellowMissile  = new EmitterDefaultMovement();
+			this.emitterYellowMissile  =  new EmitterIntervalShootMovement(120);
 		//	this.emitterYellowMissile2  = new EmitterIntervalShootMovement(50);
 			this.emitterBlueMissile  = new EmitterIntervalShootMovement(120);
 			this.emitterRedMissile = new EmitterDefaultMovement();

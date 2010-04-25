@@ -1,5 +1,6 @@
 ﻿package 
 {
+	import boss.GunWallBoss;
 	import renderer.ParticleRequestHandler;
 	import boss.AirSentryBoss;
 	import boss.AngryAirSentryBoss;
@@ -101,6 +102,7 @@
 			this.stageSelection.addBossSelection(new StageSelectionElement(BossName.HAPPY_SUN, "Lasers!" ));
 			this.stageSelection.addBossSelection(new StageSelectionElement(BossName.VERY_HAPPY_SUN, "MOAR Lasers!" ));
 			this.stageSelection.addBossSelection(new StageSelectionElement(BossName.GUN_SHIP, "Nuff said" ));
+			this.stageSelection.addBossSelection(new StageSelectionElement(BossName.GUN_WALL, "Nuff said" ));
 			this.stageSelection.addBossSelection(new StageSelectionElement(BossName.TROLL_FACE, "Trolol!" ));
 			this.stageSelection.addBossSelection(new StageSelectionElement(BossName.TEST_BOSS, "This is my Element" ));
 
@@ -197,6 +199,8 @@
 				this.level.setBoss(new VeryHappySunBoss(this, new Fla_Boss(),this.player));	
 			else if (pBossType == BossName.GUN_SHIP)
 				this.level.setBoss(new GunShipBoss(this, new Fla_Boss(),this.player));	
+			else if (pBossType == BossName.GUN_WALL)
+				this.level.setBoss(new GunWallBoss(this, new Fla_Boss(), this.player));	
 				
 			level.boss.container.addEventListener(ProjectileRequestEvent.PROJECT_REQUEST, handleProjectileRequest);
 			this.projectileEngine.container.addEventListener(ProjectileRequestEvent.PROJECT_REQUEST, handleProjectileRequest);
