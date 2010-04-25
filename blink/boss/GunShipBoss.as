@@ -8,6 +8,7 @@
 	import projectiles.EmitterPlayerTrackingMovement;
 	import projectiles.EmitterSprinklerMovement;
 	import projectiles.IEmitterMovement;
+	import projectiles.StraightProjectileMovement;
 	/**
 	 * ...
 	 * @author Yuri Doubov
@@ -25,12 +26,12 @@
 			
 			this.emitterYellowMissile  = new EmitterDefaultMovement();
 		//	this.emitterYellowMissile2  = new EmitterIntervalShootMovement(50);
-			this.emitterBlueMissile  = new EmitterDefaultMovement();
+			this.emitterBlueMissile  = new EmitterIntervalShootMovement(120);
 			this.emitterRedMissile = new EmitterDefaultMovement();
 
-			this.emitterLaser_0 = new EmitterSprinklerMovement(30, 1, 2);
-			this.emitterLaser_1 = new EmitterSprinklerMovement( -30, 1, 2);
-			//this.emitterLaser_2 = new EmitterPlayerTrackingMovement(4, 5, 
+			this.emitterLaser_0 = new EmitterSprinklerMovement(60, 1, 2);
+			this.emitterLaser_1 = new EmitterSprinklerMovement( -60, 1, 2);
+			this.emitterLaser_2 = new EmitterPlayerTrackingMovement(2, 8, player.playerData, 2, 40);
 			this._ymovement = 0;
 			initializeEmitters();
 		}

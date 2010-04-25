@@ -57,7 +57,7 @@
 				bullet = new Fla_BlueMissle();
 				bullet.hitTest.visible = false;
 				projectile = new Projectile(bullet, 90,9);
-				projectile.addBehaviour(new StraightProjectileMovement(projectile, 8));
+				projectile.addBehaviour(new StraightProjectileMovement(projectile, 7));
 				projectile.addBehaviour(new RotateProjectileMovement(projectile, player.playerData));
 				projectile.addEndBehaviour(new StraightProjectileMovement(projectile, 10));
 				
