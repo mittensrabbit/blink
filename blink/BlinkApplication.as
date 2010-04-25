@@ -55,7 +55,7 @@
 		
 		public function BlinkApplication() 
 		{
-			this.particleRequestHandler(this);
+			this.particleRequestHandler = new ParticleRequestHandler(this);
 			this.titleScreen = new Title(new Fla_Title());
 			this.titleScreen.container.addEventListener(MouseEvent.CLICK, handleTitleClick);
 			this.bossResultScreen = new BossResultScreen();
