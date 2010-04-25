@@ -12,10 +12,12 @@
 	 */
 	public class Projectile 
 	{
+		public var dieOnEnd:Boolean;
+		
 		public var container:MovieClip;
 		public var projectileMovement:IProjectileMovement;
 		public var behaviours:Array;
-		public var endBehaviour:IProjectileMovement;
+		public var endBehaviour:Array;
 		public var damage:int;
 		
 		
@@ -30,11 +32,12 @@
 			this.container.mouseEnabled = false;
 			this.projectileMovement = projectileMovement;
 			this.behaviours = new Array();
-			this.endBehaviour = null;
+			this.endBehaviour = new Array();
 			this.maxDuration = maxDuration ;
 			this.currDuration = 0;
 			this.endCondition = false;
 			this.damage = damage;
+			this.dieOnEnd = true;
 		}
 		
 		public function addBehaviour(movement:IProjectileMovement):void
@@ -45,28 +48,48 @@
 		
 		public function addEndBehaviour(behaviour:IProjectileMovement):void
 		{
-			this.endBehaviour = behaviour;
+			this.endBehaviour.push(behaviour);
 			
 		}
 		
 		public function checkEndCondition():Boolean
 		{
 			var point:Point = new Point(container.x, container.y);
-			if (point.x > 650 || point.x < 150 || point.y > 600 || point.y < 0 ||currDuration>=maxDuration || this.endCondition == true)
+			if (point.x > 650 || point.x < 150 || point.y > 600 || point.y < 0 )
 			{
-				if(this.endBehaviour == null)
-					return true;
-				else
-				{
-					this.behaviours = new Array;
-					this.behaviours.push(this.endBehaviour);
-					this.endBehaviour = null;
-					//this.maxDuration = 999;
-					return false;
-				}
+				
+				this.dieOnEnd = true;
 				return true;
 				
 			}
+			
+			if ( currDuration >= maxDuration || this.endCondition == true)
+			{
+				
+				
+				if (this.endBehaviour == null )
+				{
+						
+						if (this.dieOnEnd == true )
+						{
+							
+							return true;
+						}
+				}
+				else
+				{
+					
+					
+					if ( this.endBehaviour != null)
+					{
+						this.behaviours = this.endBehaviour;
+						this.endBehaviour = null;
+						//this.maxDuration = 999;
+						return false;
+					}
+				}
+			}
+			
 			return false;
 		}
 		

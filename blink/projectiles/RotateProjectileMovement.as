@@ -12,7 +12,7 @@
 		private var playerData:PlayerData;
 		private var turnRate:Number;
 		
-		public function RotateProjectileMovement(projectile:Projectile,playerData:PlayerData) 
+		public function RotateProjectileMovement(projectile:Projectile,playerData:PlayerData, turnRate:int) 
 		{
 			
 			this.projectile = projectile;
@@ -28,7 +28,7 @@
 			else
 				this.turnRate = turnRate;*/
 				
-				this.turnRate = 5;
+				this.turnRate = turnRate;
 		}
 		
 		public  function update():void

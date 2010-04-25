@@ -39,8 +39,6 @@
 				projectile = new Projectile(bullet, 120, 5);
 				projectile.addBehaviour(new StraightProjectileMovement(projectile, 12));
 				
-				//projectile.addBehaviour(new RotateProjectileMovement(projectile, player.playerData));
-				//
 			}
 			else if (event.emitterData.type == EmitterTypes.MISSILE_RED)
 			{
@@ -48,28 +46,32 @@
 				bullet.hitTest.visible = false;
 				projectile = new Projectile(bullet, 90,9);
 				projectile.addBehaviour(new StraightProjectileMovement(projectile, 6));
-				projectile.addBehaviour(new RotateProjectileMovement(projectile, player.playerData));
-				projectile.addEndBehaviour(new FireworkProjectileMovement(projectile,4,EmitterTypes.EXPLOSION_HOMING));
+				projectile.addBehaviour(new RotateProjectileMovement(projectile, player.playerData, 5));
+				projectile.addEndBehaviour(new FireworkProjectileMovement(projectile,8,EmitterTypes.EXPLOSION_HOMING));
+				
 			}
 			else if (event.emitterData.type == EmitterTypes.MISSILE_BLUE)
 			{
 
 				bullet = new Fla_BlueMissle();
 				bullet.hitTest.visible = false;
-				projectile = new Projectile(bullet, 90,9);
+				projectile = new Projectile(bullet, 90, 9);
+				projectile.dieOnEnd = false;
 				projectile.addBehaviour(new StraightProjectileMovement(projectile, 7));
-				projectile.addBehaviour(new RotateProjectileMovement(projectile, player.playerData));
-				projectile.addEndBehaviour(new StraightProjectileMovement(projectile, 10));
+				projectile.addBehaviour(new RotateProjectileMovement(projectile, player.playerData,5));
+				projectile.addEndBehaviour(new StraightProjectileMovement(projectile, 14));
+	
 				
 			}
 			else if (event.emitterData.type == EmitterTypes.MISSILE_YELLOW)
 			{
 				bullet = new Fla_YellowMissle();
 				bullet.hitTest.visible = false;
-				projectile = new Projectile(bullet, 90,9);
+				projectile = new Projectile(bullet, 90, 9);
 				projectile.addBehaviour(new StraightProjectileMovement(projectile, 7));
-				projectile.addBehaviour(new RotateProjectileMovement(projectile, player.playerData));
+				projectile.addBehaviour(new RotateProjectileMovement(projectile, player.playerData,5));
 				projectile.addEndBehaviour(new FireworkProjectileMovement(projectile,20,EmitterTypes.EXPLOSION_CLOUD));
+				
 			}
 			else if (event.emitterData.type == EmitterTypes.EXPLOSION_CLOUD)
 			{
@@ -91,11 +93,14 @@
 			{
 				bullet = new Fla_LaserProjectile();
 				bullet.hitTest.visible = false;
-				projectile = new Projectile(bullet, 30,5);
-				projectile.addBehaviour(new StraightProjectileMovement(projectile, 10));
-				projectile.addBehaviour(new RotateProjectileMovement(projectile, player.playerData));
-				projectile.addEndBehaviour(new StraightProjectileMovement(projectile, 25));
+				projectile = new Projectile(bullet, 10, 5);
+				projectile.dieOnEnd = false;
+				projectile.addBehaviour(new StraightProjectileMovement(projectile, 9));
+				projectile.addBehaviour(new RotateProjectileMovement(projectile, player.playerData,11));
+				projectile.addEndBehaviour(new StraightProjectileMovement(projectile, 20));
+			
 			}
+
 			
 			
 			bullet.rotation = event.emitterData.rotation;
@@ -115,6 +120,7 @@
 				
 				if (projectile.collisionDetectionAgainstObject(player.ship.hitTest))
 				{
+					
 					container.removeChild(projectile.container);
 					//player.playerData.damageMultiplier += 10;
 					player.playerData.health -= projectile.damage * (player.playerData.damageMultiplier / 100);
@@ -122,8 +128,12 @@
 				}
 				else if (projectile.checkEndCondition())
 				{
+					if (projectile.dieOnEnd = true)
+					{
+						
 					container.removeChild(projectile.container);
 					_projectiles.splice(i, 1);
+					}
 				}
 			}
 		}
