@@ -19,6 +19,10 @@
 			
 			this._ymovement = 0;
 			initializeEmitters();
+			
+			this._rotation = 0;
+			this._xmovement = 0;
+			this._ymovement = 0;
 		}
 		
 		protected override function moveBoss():void {

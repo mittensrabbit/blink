@@ -18,9 +18,9 @@
 		protected var emitters:Array;
 		
 		public var _boss_mc:MovieClip;
-		protected var _xmovement:Number = 1;
-		protected var _ymovement:Number = 1;
-		protected var _rotation:Number = 1;
+		protected var _xmovement:Number = 0;
+		protected var _ymovement:Number = 0;
+		protected var _rotation:Number = 0;
 		protected var _blinkApplicationRef:BlinkApplication;
 		protected var hitPointsArray:Array;
 		

@@ -54,7 +54,7 @@
 			else if (event.emitterData.type == EmitterTypes.MISSILE_BLUE)
 			{
 
-				bullet = new Fla_RedMissle();
+				bullet = new Fla_BlueMissle();
 				bullet.hitTest.visible = false;
 				projectile = new Projectile(bullet, 90,10);
 				projectile.addBehaviour(new StraightProjectileMovement(projectile, 8));
@@ -64,7 +64,7 @@
 			}
 			else if (event.emitterData.type == EmitterTypes.MISSILE_YELLOW)
 			{
-				bullet = new Fla_RedMissle();
+				bullet = new Fla_YellowMissle();
 				bullet.hitTest.visible = false;
 				projectile = new Projectile(bullet, 90,10);
 				projectile.addBehaviour(new StraightProjectileMovement(projectile, 8));
