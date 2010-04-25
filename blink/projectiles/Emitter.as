@@ -38,16 +38,6 @@
 		
 		public function handleEnterFrame(event:Event):void {
 			
-			
-			//cooldown += 1;
-			//if (cooldown >= maxCoolDown)
-			//{
-				//cooldown = 0;
-				// apply emitter behaviour + dispatch
-				//emitterData.rotation += 1.0;
-				//emitter.dispatchEvent(new ProjectileRequestEvent(ProjectileRequestEvent.PROJECT_REQUEST, emitterData));	
-				//
-			//}
 			this.behaviour.update();
 		}
 		
