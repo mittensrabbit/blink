@@ -86,7 +86,35 @@
 			this._blinkAppRef.blinkCooldown = 33;
 		}
 		
-		public function blink(event:MouseEvent):void
+		public function blinkToRandom():void 
+		{
+			ship.alpha = 0.1;
+			//playerData.damageMultiplier += 25;
+			playerData.health -= 100;
+			var mcIn:MovieClip = new Fla_TeleportIn();
+			mcIn.alpha = 0.2;
+			mcIn.x = playerData.coords.x;
+			mcIn.y = playerData.coords.y;
+			mcIn.mouseChildren = false;
+			mcIn.mouseEnabled = false;
+			addChild(mcIn);
+			var randX:Number = Math.random() * 500 + 150;
+			var randY:Number = Math.random() * 500 + 50;
+			var coordsAfterBlink:Point = new Point(randX, randY);
+			playerData.setCoordinates(coordsAfterBlink);
+			syncShipCoords();
+
+			var mc:MovieClip = new Fla_TeleportIn();
+			mc.x = randX;
+			mc.y = randY;
+			mc.mouseChildren = false;
+			mc.mouseEnabled = false;
+			mc.alpha = 0.8
+			
+			addChild(mc);
+		}
+		
+		private function blink(event:MouseEvent):void
 		{
 			ship.alpha = 0.1;
 			playerData.damageMultiplier += 25;
