@@ -61,6 +61,7 @@
 					this.behaviours = new Array;
 					this.behaviours.push(this.endBehaviour);
 					this.endBehaviour = null;
+					this.maxDuration = 999;
 					return false;
 				}
 				return true;
