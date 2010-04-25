@@ -17,6 +17,8 @@
 	public class Player extends Sprite
 	{
 		public var playerData:PlayerData;
+		public var blinkMeter:Meter;
+		
 		public var ship:MovieClip;
 		
 		private var _blinkAppRef:BlinkApplication;
@@ -37,10 +39,15 @@
 			this._blinkAppRef = pBlinkApp;
 			this.ship = new Fla_Ship();
 			this.playerData = new PlayerData();
+			this.blinkMeter = new Meter(new Fla_BlinkMeter());
 			magnitude_up = 0;
 			magnitude_down = 0;
 			magnitude_left = 0;
 			magnitude_right = 0;
+			
+			blinkMeter.container.x = -25;
+			blinkMeter.container.y = -50;
+			ship.addChild(blinkMeter.container);
 		}
 		
 		public function handleKeyboardDown(event:KeyboardEvent):void
@@ -148,6 +155,8 @@
 			syncShipCoords();
 			updateShipAlphaValue();	
 			reduceDamageMultiplier();
+			var bilnkPercent:int = ((this._blinkAppRef.blinkCooldown / 33)*100);
+			blinkMeter.update(bilnkPercent);			
 		}
 		
 		private function syncShipCoords():void

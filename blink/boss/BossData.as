@@ -16,7 +16,7 @@
 		private var _bossRef:Boss;
 		
 		public function BossData(pBoss:Boss) {
-			this.health = 100;
+			this.health = 1000;
 			this.coords = new Point(400, 500);
 			//this.damageMultiplier = 100;
 			
