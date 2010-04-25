@@ -19,8 +19,10 @@
 		private var emitter:MovieClip;
 		private var emitterData:EmitterData;
 		private var behaviour:IEmitterMovement;
-		var cooldown = 0;
-		var maxCoolDown = 1;
+
+		var cooldown = 0 ;
+		var maxCoolDown = 10;
+
 		
 		public function Emitter(emitter:MovieClip,type:String, shiftX:Number, shiftY:Number) 
 		{
