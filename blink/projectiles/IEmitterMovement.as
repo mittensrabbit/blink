@@ -10,6 +10,7 @@
 	{
 		function update():void;
 		function bind(emitter:MovieClip, emitterData:EmitterData):void;
+		function copyBase():IEmitterMovement;
 		
 	}
 	

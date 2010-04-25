@@ -28,6 +28,11 @@
 			this.emitter = emitter;
 		}
 		
+		public function baseCopy():EmitterIntervalShootMovement
+		{
+			return new EmitterIntervalShootMovement(this.maxCoolDown);
+		}
+		
 		public function update():void
 		{
 			cooldown += 1;

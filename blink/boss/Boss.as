@@ -93,7 +93,10 @@
 					//mc.visible = false;
 
 					emitter = new Emitter(mc, EmitterTypes.MISSILE_BLUE, this._boss_mc.x, this._boss_mc.y);
-					if(this.emitterBlueMissile != null) emitter.setEmitterType(this.emitterBlueMissile);
+					if (this.emitterBlueMissile != null)
+					{ 
+						emitter.setEmitterType(this.emitterBlueMissile.copyBase());
+					}
 					emitters.push(emitter);
 				}
 				if (mc is Fla_Emitter4)

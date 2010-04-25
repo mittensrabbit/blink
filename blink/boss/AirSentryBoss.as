@@ -3,6 +3,7 @@
 	import boss.Boss;
 	import flash.display.MovieClip;
 	import flash.events.Event;
+	import projectiles.EmitterDefaultMovement;
 	/**
 	 * ...
 	 * @author Yuri Doubov
@@ -16,6 +17,8 @@
 			this.container.addChild(this._boss_mc);
 			this._boss_mc.x = 400-(this._boss_mc.width/2);
 			
+			this.emitterYellowMissile  = new EmitterDefaultMovement();
+			this.emitterBlueMissile  = new EmitterDefaultMovement();
 			this._ymovement = 0;
 			initializeEmitters();
 		}

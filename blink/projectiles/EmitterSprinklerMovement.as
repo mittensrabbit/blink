@@ -47,6 +47,13 @@
 			this.maxRotation = this.emitterData.rotation + (Math.abs(rotation) / 2);
 		}
 		
+		public function copyBase():IEmitterMovement
+		{
+			
+			return new EmitterSprinklerMovement(this.rotation, this.interval, this.maxCoolDown);
+			
+		}
+		
 		public function update():void
 		{
 			cooldown += 1;

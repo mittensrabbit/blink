@@ -40,6 +40,7 @@
 		public function setEmitterType(type:IEmitterMovement):void
 		{
 			this.behaviour = type;
+			this.behaviour.bind(this.emitter, this.emitterData);
 		}
 		
 		public function handleEnterFrame(event:Event):void {
