@@ -193,7 +193,7 @@
 			this.player = new Player(this);		
 			this.level = new Level();
 			currentLevelResult = new LevelResultData(pBossType)
-			this.projectileEngine = new ProjectileEngine(player);
+			this.projectileEngine = new ProjectileEngine(player, this);
 			
 			if(pBossType == BossName.GOAT)
 				this.level.setBoss(new GoatBoss(this, new Fla_Boss(),this.player));

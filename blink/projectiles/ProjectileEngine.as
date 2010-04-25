@@ -18,11 +18,13 @@
 		private var _projectiles:Array;
 		private var player:Player;
 		
-		public function ProjectileEngine(player:Player) 
+		private var _blinkAppRef:BlinkApplication;
+		public function ProjectileEngine(player:Player, pBlinkApp:BlinkApplication) 
 		{
 			this._projectiles = new Array();
 			this.container = new MovieClip();
 			this.player = player;
+			this._blinkAppRef = pBlinkApp;
 		}
 		
 		public function addProjectile(event:ProjectileRequestEvent):void
@@ -120,7 +122,7 @@
 				
 				if (projectile.collisionDetectionAgainstObject(player.ship.hitTest))
 				{
-					
+					this._blinkAppRef.particleRequestHandler.requestParticle(new Fla_PlayerDeath(), projectile.container.x, projectile.container.y, 2, null);
 					container.removeChild(projectile.container);
 					//player.playerData.damageMultiplier += 10;
 					player.playerData.health -= projectile.damage * (player.playerData.damageMultiplier / 100);

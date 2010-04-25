@@ -20,11 +20,12 @@
 			_patricleArray = new Array();
 		}
 		
-		public function requestParticle(pParticle_mc:MovieClip, pXcoordinate:Number, pYcoordinate:Number, pDuration:Number, pParticle_snd:Sound):void {
+		public function requestParticle(pParticle_mc:MovieClip, pXcoordinate:Number, pYcoordinate:Number, pDuration:Number, pParticle_snd:Sound = null):void {
 			pParticle_mc.x = pXcoordinate;
 			pParticle_mc.y = pYcoordinate;
 			this._blinkAppRef.addChild(pParticle_mc);
-			pParticle_snd.play();
+			if (pParticle_snd)
+				pParticle_snd.play();
 			var tempParticle:Particle = new Particle(pParticle_mc, pDuration);
 			tempParticle.addEventListener(TimerEvent.TIMER_COMPLETE, this.cleanUpParticle);
 			this._patricleArray.push(tempParticle);
