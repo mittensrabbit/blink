@@ -31,6 +31,7 @@
 	{
 		private var titleScreen:Title;
 		private var bossResultScreen:BossResultScreen;
+		private var deathScreen:MovieClip;
 		private var stageSelection:StageSelection;
 		private var player:Player;
 		private var hud:HeadsUpDisplay;
@@ -52,18 +53,32 @@
 			this.bossResultScreen = new BossResultScreen();
 			this.bossResultScreen.container.addEventListener(MouseEvent.CLICK, showSelectorScreenFromResults);
 			
+			this.deathScreen = new Fla_Death();
+			this.deathScreen.addEventListener(MouseEvent.CLICK, showSelectorScreenFromDeath);
+			
 			this.rulesPage = new Fla_Rules(); 
 			this.rulesPage.addEventListener(MouseEvent.CLICK, startLevel);
 			this.addChild(titleScreen.container);
 			
 		}
 		
+		private function showSelectorScreenFromDeath(event:MouseEvent):void
+		{
+			this.removeChild(deathScreen);
+			setupSelectionFromResult();
+		}
+		
 		private function showSelectorScreenFromResults(event:MouseEvent):void
 		{
 			this.removeChild(bossResultScreen.container);
+			setupSelectionFromResult();
+		}
+		
+		private function setupSelectionFromResult():void
+		{
 			this.addChild(stageSelection.container);
 			this.addChild(stageSelection.handles);
-			this.stageSelection.container.addEventListener(LevelRequestEvent.LEVEL_REQUEST, handleLevelRequest);
+			this.stageSelection.container.addEventListener(LevelRequestEvent.LEVEL_REQUEST, handleLevelRequest);	
 		}
 		
 		private function handleTitleClick(event:MouseEvent):void
@@ -130,16 +145,13 @@
 		}
 		public function endLevelPlayerDead():void 
 		{
-			currentLevelResult.saveFinalTime();
-			bossResultScreen.refresh(currentLevelResult);
-			stageSelection.refreshMenu(currentLevelResult);
 			
 			//show results, update stage selection screen with new rank etc..
 			stage.removeEventListener(Event.ENTER_FRAME, mainGameLoop);
 			stage.removeEventListener(KeyboardEvent.KEY_DOWN, handleKeyboardDown);
 			stage.removeEventListener(KeyboardEvent.KEY_UP, handleKeyboardUp);
 			stage.removeEventListener(MouseEvent.MOUSE_DOWN, handleMouseClick);	
-			addChild(bossResultScreen.container);
+			addChild(deathScreen);
 			
 			removeChild(level.layers[0].container);
 			removeChild(projectileEngine.container);
