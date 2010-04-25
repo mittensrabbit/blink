@@ -3,6 +3,7 @@
 	import boss.GunWallBoss;
 	import flash.media.SoundChannel;
 	import flash.media.SoundMixer;
+	import flash.media.SoundTransform;
 	import renderer.ParticleRequestHandler;
 	import boss.AirSentryBoss;
 	import boss.AngryAirSentryBoss;
@@ -133,7 +134,8 @@
 			removeChild(rulesPage);
 			backgroundMusic = new Fla_sfx_bgMusic().play();
 			backgroundMusic = new Fla_sfx_flight().play();
-		
+			
+					
 			stage.addEventListener(Event.ENTER_FRAME, mainGameLoop);
 			stage.addEventListener(KeyboardEvent.KEY_DOWN, handleKeyboardDown);
 			stage.addEventListener(KeyboardEvent.KEY_UP, handleKeyboardUp);
@@ -178,7 +180,6 @@
 			removeChild(level.layers[0].container);
 			removeChild(projectileEngine.container);
 			removeChild(level.boss.container);
-			this._zapperLightning.cleanUp();
 			removeChild(this._zapperLightning);
 			removeChild(player.ship);
 			removeChild(player);
@@ -189,7 +190,6 @@
 		{
 			this.player = new Player(this);		
 			this.level = new Level();
-			
 			currentLevelResult = new LevelResultData(pBossType)
 			this.projectileEngine = new ProjectileEngine(player);
 			
