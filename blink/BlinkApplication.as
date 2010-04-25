@@ -124,7 +124,7 @@
 		
 		public function endLevel()
 		{
-			
+			trace("ENDING LEVEL");
 			currentLevelResult.saveFinalTime();
 			bossResultScreen.refresh(currentLevelResult);
 			stageSelection.refreshMenu(currentLevelResult);
