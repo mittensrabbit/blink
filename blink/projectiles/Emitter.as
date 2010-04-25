@@ -19,8 +19,10 @@
 		private var emitter:MovieClip;
 		private var emitterData:EmitterData;
 		private var behaviour:IEmitterMovement;
+
 		var cooldown = 0 ;
 		var maxCoolDown = 10;
+
 		
 		public function Emitter(emitter:MovieClip,type:String, shiftX:Number, shiftY:Number) 
 		{
@@ -30,7 +32,7 @@
 			this.emitterData.rotation = emitter.rotation;
 			this.emitterData.type = type;
 			//this.behaviour = new EmitterDefaultMovement(this.emitter,this.emitterData);
-			this.behaviour = new EmitterSprinklerMovement(this.emitter,this.emitterData,90,10)
+			this.behaviour = new EmitterSprinklerMovement(this.emitter,this.emitterData,90,10,3)
 			
 		}
 		

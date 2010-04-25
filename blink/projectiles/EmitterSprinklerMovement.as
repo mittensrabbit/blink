@@ -20,12 +20,12 @@
 		private var direction:int;
 		private var cooldown:int;
 		private var maxCoolDown:int;
-		public function EmitterSprinklerMovement(emitter:MovieClip, emitterData:EmitterData, rotation:int, interval:int ) 
+		public function EmitterSprinklerMovement(emitter:MovieClip, emitterData:EmitterData, rotation:int, interval:int,rate:int ) 
 		{
 			this.emitterData = emitterData;
 			this.emitter = emitter;
 			this.cooldown = 0;
-			this.maxCoolDown = 3;
+			this.maxCoolDown = rate;
 			this.rotation = rotation;
 			this.curRotation = 0;
 			this.interval = interval;
@@ -33,7 +33,7 @@
 				this.direction = -1;
 			else
 				this.direction = 1;
-				this.minRotation = this.emitterData.rotation - (Math.abs(rotation) / 2);
+			this.minRotation = this.emitterData.rotation - (Math.abs(rotation) / 2);
 			this.maxRotation = this.emitterData.rotation + (Math.abs(rotation) / 2);
 			
 			
