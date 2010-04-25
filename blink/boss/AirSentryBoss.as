@@ -5,6 +5,7 @@
 	import flash.display.MovieClip;
 	import flash.events.Event;
 	import projectiles.EmitterDefaultMovement;
+	import projectiles.EmitterPlayerTrackingMovement;
 	import projectiles.IEmitterMovement;
 	/**
 	 * ...
@@ -23,6 +24,8 @@
 			
 			this.emitterYellowMissile  = new EmitterDefaultMovement();
 		//	this.emitterYellowMissile2  = new EmitterIntervalShootMovement(50);
+
+			this.emitterLaser_2 = new EmitterPlayerTrackingMovement(4, 2, player.playerData, 2, 60);
 			this.emitterBlueMissile  = new EmitterDefaultMovement();
 			this.emitterRedMissile = new EmitterDefaultMovement();
 			this._ymovement = 0;

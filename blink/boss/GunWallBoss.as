@@ -13,14 +13,14 @@
 	 * ...
 	 * @author Yuri Doubov
 	 */
-	public class GunShipBoss extends Boss
+	public class GunWallBoss extends Boss
 	{
-		public function GunShipBoss(pBlinkApp:BlinkApplication, container:MovieClip,player:Player) 
+		public function GunWallBoss(pBlinkApp:BlinkApplication, container:MovieClip,player:Player) 
 		{
 
 			super(pBlinkApp, container);
 			this.player = player;
-			this._boss_mc = new Fla_BossGunShip();
+			this._boss_mc = new Fla_BossGunWall();
 			this.container.addChild(this._boss_mc);
 			this._boss_mc.x = 400-(this._boss_mc.width/2);
 			

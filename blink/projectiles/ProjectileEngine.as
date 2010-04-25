@@ -57,7 +57,7 @@
 				bullet.hitTest.visible = false;
 				projectile = new Projectile(bullet, 90, 9);
 				projectile.dieOnEnd = false;
-				projectile.addBehaviour(new StraightProjectileMovement(projectile, 8));
+				projectile.addBehaviour(new StraightProjectileMovement(projectile, 7));
 				projectile.addBehaviour(new RotateProjectileMovement(projectile, player.playerData,5));
 				projectile.addEndBehaviour(new StraightProjectileMovement(projectile, 10));
 	

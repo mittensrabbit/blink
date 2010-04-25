@@ -1,5 +1,7 @@
 ﻿package 
 {
+	import boss.GunWallBoss;
+	import renderer.ParticleRequestHandler;
 	import boss.AirSentryBoss;
 	import boss.AngryAirSentryBoss;
 	import boss.GunShipBoss;
@@ -50,9 +52,11 @@
 		
 		public var blinkCooldown:Number = 0;
 		
+		public var particleRequestHandler:ParticleRequestHandler;
+		
 		public function BlinkApplication() 
 		{
-			this.stage.quality = "MEDIUM";
+			this.particleRequestHandler = new ParticleRequestHandler(this);
 			this.titleScreen = new Title(new Fla_Title());
 			this.titleScreen.container.addEventListener(MouseEvent.CLICK, handleTitleClick);
 			this.bossResultScreen = new BossResultScreen();
@@ -94,6 +98,7 @@
 			
 			this.stageSelection.addBossSelection(new StageSelectionElement(BossName.GOAT,  "Intro stage - learn to fly and blink!" ));
 			this.stageSelection.addBossSelection(new StageSelectionElement(BossName.AIR_SENTRY, "Yellow missles explode into bullets - blink away!" ));
+			this.stageSelection.addBossSelection(new StageSelectionElement(BossName.GUN_WALL, "Blink between the lasers.." ));
 			this.stageSelection.addBossSelection(new StageSelectionElement(BossName.ANGRY_AIR_SENTRY, "You beat him once.. now he is pissed!" ));
 			this.stageSelection.addBossSelection(new StageSelectionElement(BossName.HAPPY_SUN, "Lasers!" ));
 			this.stageSelection.addBossSelection(new StageSelectionElement(BossName.VERY_HAPPY_SUN, "MOAR Lasers!" ));
@@ -194,6 +199,8 @@
 				this.level.setBoss(new VeryHappySunBoss(this, new Fla_Boss(),this.player));	
 			else if (pBossType == BossName.GUN_SHIP)
 				this.level.setBoss(new GunShipBoss(this, new Fla_Boss(),this.player));	
+			else if (pBossType == BossName.GUN_WALL)
+				this.level.setBoss(new GunWallBoss(this, new Fla_Boss(), this.player));	
 				
 			level.boss.container.addEventListener(ProjectileRequestEvent.PROJECT_REQUEST, handleProjectileRequest);
 			this.projectileEngine.container.addEventListener(ProjectileRequestEvent.PROJECT_REQUEST, handleProjectileRequest);

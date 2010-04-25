@@ -14,6 +14,7 @@
 		public static const HAPPY_SUN:String = "Happy Sun";
 		public static const VERY_HAPPY_SUN:String = "Very Happy Sun";
 		public static const GUN_SHIP:String = "Gun ship";
+		public static const GUN_WALL:String = "Gun wall";
 		public static const TEST_BOSS:String = "Test Boss";
 	}
 	
