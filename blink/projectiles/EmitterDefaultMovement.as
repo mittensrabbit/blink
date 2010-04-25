@@ -17,11 +17,16 @@
 		
 		public function EmitterDefaultMovement(emitter:MovieClip, emitterData:EmitterData) 
 		{
-			this.emitterData = emitterData;
-			this.emitter = emitter;
+			
 			this.cooldown = 0;
 			this.maxCoolDown = 1;
-
+			
+		}
+		
+		public function bind(emitter:MovieClip, emitterData:EmitterData):viod {
+			
+			this.emitterData = emitterData;
+			this.emitter = emitter;
 		}
 		
 		public function update():void
