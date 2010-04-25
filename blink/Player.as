@@ -126,26 +126,30 @@
 			ship.alpha = 0.1;
 			playerData.damageMultiplier += 25;
 			
-			var mcIn:MovieClip = new Fla_TeleportIn();
-			mcIn.alpha = 0.2;
-			mcIn.x = playerData.coords.x;
-			mcIn.y = playerData.coords.y;
-			mcIn.mouseChildren = false;
-			mcIn.mouseEnabled = false;
-			addChild(mcIn);
+			//var mcIn:MovieClip = new Fla_TeleportIn();
+			//mcIn.alpha = 0.2;
+			//mcIn.x = playerData.coords.x;
+			//mcIn.y = playerData.coords.y;
+			//mcIn.mouseChildren = false;
+			//mcIn.mouseEnabled = false;
+			//addChild(mcIn);
+			this._blinkAppRef.particleRequestHandler.requestParticle(new Fla_TeleportIn(), playerData.coords.x, playerData.coords.y, 3);
+			
 
 			var coordsAfterBlink:Point = new Point(event.stageX, event.stageY);
 			playerData.setCoordinates(coordsAfterBlink);
 			syncShipCoords();
 
-			var mc:MovieClip = new Fla_TeleportIn();
-			mc.x = event.stageX;
-			mc.y = event.stageY;
-			mc.mouseChildren = false;
-			mc.mouseEnabled = false;
-			mc.alpha = 0.8
+			//var mc:MovieClip = new Fla_TeleportIn();
+			//mc.x = event.stageX;
+			//mc.y = event.stageY;
+			//mc.mouseChildren = false;
+			//mc.mouseEnabled = false;
+			//mc.alpha = 0.8
+			this._blinkAppRef.particleRequestHandler.requestParticle(new Fla_TeleportIn(), event.stageX, event.stageY, 3);
 			
-			addChild(mc);		
+			
+			//addChild(mc);		
 		}
 		
 		public function handleEnterFrame(event:Event):void
