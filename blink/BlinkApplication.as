@@ -205,7 +205,7 @@
 		{
 			this.blinkCooldown = (this.blinkCooldown < 1? 0:this.blinkCooldown - 1);
 			if (player.ship.hitTestObject(this.level.boss._boss_mc)) {
-				//player.blink();
+				player.blinkToRandom();
 			}
 			
 			updateHUD();
