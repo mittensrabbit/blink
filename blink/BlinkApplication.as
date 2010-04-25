@@ -103,7 +103,7 @@
 			
 			this.stageSelection.addBossSelection(new StageSelectionElement(BossName.GOAT,  "Intro stage - learn to fly and blink!" ));
 			this.stageSelection.addBossSelection(new StageSelectionElement(BossName.AIR_SENTRY, "Yellow missles explode into bullets - blink away!" ));
-			this.stageSelection.addBossSelection(new StageSelectionElement(BossName.ANGRY_AIR_SENTRY, "You beat him once.. now he is pissed!" ));
+			//this.stageSelection.addBossSelection(new StageSelectionElement(BossName.ANGRY_AIR_SENTRY, "You beat him once.. now he is pissed!" ));
 			this.stageSelection.addBossSelection(new StageSelectionElement(BossName.GUN_WALL, "Start flying up immediately!" ));
 			this.stageSelection.addBossSelection(new StageSelectionElement(BossName.HAPPY_SUN, "Lasers!" ));
 			this.stageSelection.addBossSelection(new StageSelectionElement(BossName.VERY_HAPPY_SUN, "MOAR Lasers!" ));
@@ -132,6 +132,7 @@
 		{
 			removeChild(rulesPage);
 			backgroundMusic = new Fla_sfx_bgMusic().play();
+			backgroundMusic = new Fla_sfx_flight().play();
 		
 			stage.addEventListener(Event.ENTER_FRAME, mainGameLoop);
 			stage.addEventListener(KeyboardEvent.KEY_DOWN, handleKeyboardDown);
@@ -166,7 +167,7 @@
 		}
 		public function endLevelPlayerDead():void 
 		{
-			
+			SoundMixer.stopAll();
 			//show results, update stage selection screen with new rank etc..
 			stage.removeEventListener(Event.ENTER_FRAME, mainGameLoop);
 			stage.removeEventListener(KeyboardEvent.KEY_DOWN, handleKeyboardDown);
