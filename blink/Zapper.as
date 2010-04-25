@@ -43,7 +43,7 @@ package
 				return;
 			}
 			this._zapper_mc.visible = this._visible = true;
-			this._zapper_mc.alpha = 1/hypotenuse*100;
+			this._zapper_mc.alpha = 1 / hypotenuse * 170;
 			this._bossRef.bossData.health -= (1/hypotenuse) * 100;
 			
 			//var ratio:Number;
