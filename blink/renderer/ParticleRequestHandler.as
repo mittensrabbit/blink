@@ -30,8 +30,15 @@
 		}
 		
 		private function cleanUpParticle(e:TimerEvent):void {
-			//e.target
-			trace("CLENA UP PARTICLE");
+			//trace(e.target);
+			//trace("CLENA UP PARTICLE");
+			for (var i in this._patricleArray) {
+				if (this._patricleArray[i] == e.target) {
+					this._blinkAppRef.removeChild(this._patricleArray[i].movieClip);
+					this._patricleArray.splice(i, 1);
+					return;
+				}
+			}
 		}
 		
 	}
