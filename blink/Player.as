@@ -133,7 +133,7 @@
 			//mcIn.mouseChildren = false;
 			//mcIn.mouseEnabled = false;
 			//addChild(mcIn);
-			this._blinkAppRef.particleRequestHandler.requestParticle(new Fla_TeleportIn(), playerData.coords.x, playerData.coords.y, 3);
+			this._blinkAppRef.particleRequestHandler.requestParticle(new Fla_TeleportIn(), playerData.coords.x, playerData.coords.y, 3, new Fla_sfx_blink());
 			
 
 			var coordsAfterBlink:Point = new Point(event.stageX, event.stageY);
@@ -146,7 +146,7 @@
 			//mc.mouseChildren = false;
 			//mc.mouseEnabled = false;
 			//mc.alpha = 0.8
-			this._blinkAppRef.particleRequestHandler.requestParticle(new Fla_TeleportIn(), event.stageX, event.stageY, 3);
+			this._blinkAppRef.particleRequestHandler.requestParticle(new Fla_TeleportIn(), event.stageX, event.stageY, 3, new Fla_sfx_blink());
 			
 			
 			//addChild(mc);		

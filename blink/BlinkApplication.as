@@ -178,6 +178,7 @@
 			removeChild(level.layers[0].container);
 			removeChild(projectileEngine.container);
 			removeChild(level.boss.container);
+			this._zapperLightning.cleanUp();
 			removeChild(this._zapperLightning);
 			removeChild(player.ship);
 			removeChild(player);
@@ -188,6 +189,7 @@
 		{
 			this.player = new Player(this);		
 			this.level = new Level();
+			
 			currentLevelResult = new LevelResultData(pBossType)
 			this.projectileEngine = new ProjectileEngine(player);
 			

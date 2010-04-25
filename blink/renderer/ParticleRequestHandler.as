@@ -1,5 +1,6 @@
 ﻿package renderer 
 {
+	import flash.media.Sound;
 	import renderer.Particle;
 	import flash.display.MovieClip;
 	import flash.events.TimerEvent;
@@ -19,10 +20,11 @@
 			_patricleArray = new Array();
 		}
 		
-		public function requestParticle(pParticle_mc:MovieClip, pXcoordinate:Number, pYcoordinate:Number, pDuration:Number):void {
+		public function requestParticle(pParticle_mc:MovieClip, pXcoordinate:Number, pYcoordinate:Number, pDuration:Number, pParticle_snd:Sound):void {
 			pParticle_mc.x = pXcoordinate;
 			pParticle_mc.y = pYcoordinate;
 			this._blinkAppRef.addChild(pParticle_mc);
+			pParticle_snd.play();
 			var tempParticle:Particle = new Particle(pParticle_mc, pDuration);
 			tempParticle.addEventListener(TimerEvent.TIMER_COMPLETE, this.cleanUpParticle);
 			this._patricleArray.push(tempParticle);
