@@ -2,6 +2,7 @@
 {
 	import flash.display.MovieClip;
 	import flash.events.Event;
+	import flash.geom.Point;
 	import projectiles.Emitter;
 
 	import projectiles.EmitterTypes;
@@ -23,6 +24,8 @@
 		protected var _blinkApplicationRef:BlinkApplication;
 		protected var hitPointsArray:Array;
 		
+		public var _targetCoords_mc:MovieClip;
+		
 		public function Boss(pBlinkApp:BlinkApplication, container:MovieClip) 
 		{
 			this._blinkApplicationRef = pBlinkApp;
@@ -41,6 +44,10 @@
 				if (mc is Fla_HitTest) {
 					mc.visible = false;
 					this.hitPointsArray.push(mc);
+				}
+				if (mc is Fla_Target) {
+					mc.visible = false;
+					this._targetCoords_mc = mc;
 				}
 				if (mc is Fla_Emitter)
 				{
