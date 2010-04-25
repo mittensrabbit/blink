@@ -149,7 +149,7 @@
 			this._blinkAppRef.particleRequestHandler.requestParticle(new Fla_TeleportIn(), event.stageX, event.stageY, 3);
 			
 			
-			addChild(mc);		
+			//addChild(mc);		
 		}
 		
 		public function handleEnterFrame(event:Event):void
