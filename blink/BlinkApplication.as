@@ -1,5 +1,6 @@
 ﻿package 
 {
+	import renderer.ParticleRequestHandler;
 	import boss.AirSentryBoss;
 	import boss.TestBoss;
 	import boss.TrollFaceBoss;
@@ -46,9 +47,11 @@
 		
 		public var blinkCooldown:Number = 0;
 		
+		public var particleRequestHandler:ParticleRequestHandler;
+		
 		public function BlinkApplication() 
 		{
-			this.stage.quality = "MEDIUM";
+			this.particleRequestHandler(this);
 			this.titleScreen = new Title(new Fla_Title());
 			this.titleScreen.container.addEventListener(MouseEvent.CLICK, handleTitleClick);
 			this.bossResultScreen = new BossResultScreen();
