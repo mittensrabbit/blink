@@ -128,6 +128,27 @@
 			removeChild(player);
 			removeChild(hud.container);	
 		}
+		public function endLevelPlayerDead():void 
+		{
+			currentLevelResult.saveFinalTime();
+			bossResultScreen.refresh(currentLevelResult);
+			stageSelection.refreshMenu(currentLevelResult);
+			
+			//show results, update stage selection screen with new rank etc..
+			stage.removeEventListener(Event.ENTER_FRAME, mainGameLoop);
+			stage.removeEventListener(KeyboardEvent.KEY_DOWN, handleKeyboardDown);
+			stage.removeEventListener(KeyboardEvent.KEY_UP, handleKeyboardUp);
+			stage.removeEventListener(MouseEvent.MOUSE_DOWN, handleMouseClick);	
+			addChild(bossResultScreen.container);
+			
+			removeChild(level.layers[0].container);
+			removeChild(projectileEngine.container);
+			removeChild(level.boss.container);
+			removeChild(this._zapperLightning);
+			removeChild(player.ship);
+			removeChild(player);
+			removeChild(hud.container);
+		}
 		
 		private function initLevel(pBossType:String):void
 		{
@@ -157,7 +178,7 @@
 			level.addGraphicLayer(background);
 			this._zapperLightning = new Zapper(this.player, this.level.boss);
 			
-			this.hud = new HeadsUpDisplay(player.playerData, this.level.boss.bossData);
+			this.hud = new HeadsUpDisplay(this, player.playerData, this.level.boss.bossData);
 			addChild(level.layers[0].container);
 			addChild(projectileEngine.container);
 			addChild(level.boss.container);

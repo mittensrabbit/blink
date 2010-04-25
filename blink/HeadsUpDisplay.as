@@ -15,7 +15,10 @@
 		private var playerData:PlayerData;
 		private var bossData:BossData;
 		
-		public function HeadsUpDisplay(playerData:PlayerData, bossData:BossData) {
+		private var _blinkAppRef:BlinkApplication;
+		
+		public function HeadsUpDisplay(pBlinkApp:BlinkApplication, playerData:PlayerData, bossData:BossData) {
+			this._blinkAppRef = pBlinkApp;
 			this.container = new Fla_HUD();
 			this.bossMeter = new Meter(new Fla_BossMeter());
 			this.playerMeter = new Meter(new Fla_PlayerMeter());
@@ -35,6 +38,8 @@
 		{
 			container.weakness.field.text = Math.round(playerData.damageMultiplier) + "%";
 			var healthPercent:int = new int((playerData.health / PlayerData.MAX_HEALTH) * 100);
+			if (healthPercent <= 0)
+				this._blinkAppRef.endLevelPlayerDead();
 			this.playerMeter.update(healthPercent);
 			
 			healthPercent = int((bossData.health / BossData.MAX_HEALTH) * 100);
