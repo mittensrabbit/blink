@@ -75,8 +75,8 @@
 			{
 				bullet = new Fla_LaserProjectile();
 				bullet.hitTest.visible = false;
-				projectile = new Projectile(bullet, 45,2);
-				projectile.addBehaviour(new StraightProjectileMovement(projectile,3));
+				projectile = new Projectile(bullet, 15,2);
+				projectile.addBehaviour(new StraightProjectileMovement(projectile,20));
 				
 			}
 			else if (event.emitterData.type == EmitterTypes.EXPLOSION_BULLET)
