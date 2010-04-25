@@ -19,6 +19,7 @@
 		public function refresh(levelResultData:LevelResultData):void
 		{
 			var frame:int = levelResultData.ranking + 1;
+			container.timeResult.text = levelResultData.timeAsString;
 			container.stars.gotoAndStop(levelResultData.ranking + 1);
 		}
 		

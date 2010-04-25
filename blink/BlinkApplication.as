@@ -112,7 +112,7 @@
 			currentLevelResult.saveFinalTime();
 			bossResultScreen.refresh(currentLevelResult);
 			stageSelection.refreshMenu(currentLevelResult);
-				
+			
 			//show results, update stage selection screen with new rank etc..
 			stage.removeEventListener(Event.ENTER_FRAME, mainGameLoop);
 			stage.removeEventListener(KeyboardEvent.KEY_DOWN, handleKeyboardDown);
@@ -204,8 +204,8 @@
 		private function mainGameLoop(event:Event):void
 		{
 			this.blinkCooldown = (this.blinkCooldown < 1? 0:this.blinkCooldown - 1);
-			if (player.ship.hitTestObject(this.level.boss._boss_mc)) {
-				//player.blink();
+			if (this.level.boss.testPlayerCollision(this.player)) {
+				player.blinkToRandom();
 			}
 			
 			updateHUD();
