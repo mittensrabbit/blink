@@ -2,6 +2,7 @@
 {
 	import boss.GunWallBoss;
 	import flash.media.SoundChannel;
+	import flash.media.SoundMixer;
 	import renderer.ParticleRequestHandler;
 	import boss.AirSentryBoss;
 	import boss.AngryAirSentryBoss;
@@ -142,7 +143,7 @@
 		
 		public function endLevel()
 		{
-			backgroundMusic.stop();
+			SoundMixer.stopAll();
 			trace("ENDING LEVEL");
 			currentLevelResult.saveFinalTime();
 			bossResultScreen.refresh(currentLevelResult);
