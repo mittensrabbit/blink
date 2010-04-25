@@ -91,8 +91,8 @@
 			{
 				bullet = new Fla_LaserProjectile();
 				bullet.hitTest.visible = false;
-				projectile = new Projectile(bullet, 30,5);
-				projectile.addBehaviour(new StraightProjectileMovement(projectile, 5));
+				projectile = new Projectile(bullet, 45,5);
+				projectile.addBehaviour(new StraightProjectileMovement(projectile, 10));
 				projectile.addBehaviour(new RotateProjectileMovement(projectile, player.playerData));
 			}
 			
