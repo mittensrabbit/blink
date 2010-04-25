@@ -69,7 +69,7 @@
 				}
 				if (mc is Fla_EmitterLaser0)
 				{
-					//mc.visible = false;
+					mc.visible = false;
 
 					var emitter:Emitter = new Emitter(mc, EmitterTypes.LASER, this._boss_mc.x, this._boss_mc.y);
 					if(this.emitterLaser_0 != null) emitter.setEmitterType(this.emitterLaser_0.copyBase());
@@ -77,7 +77,7 @@
 				}
 				if (mc is Fla_EmitterLaser1)
 				{
-					//mc.visible = false;
+					mc.visible = false;
 
 					emitter = new Emitter(mc, EmitterTypes.LASER, this._boss_mc.x, this._boss_mc.y);
 					if(this.emitterLaser_1 != null) emitter.setEmitterType(this.emitterLaser_1.copyBase());
@@ -85,7 +85,7 @@
 				}
 				if (mc is Fla_EmitterLaser2)
 				{
-					//mc.visible = false;
+					mc.visible = false;
 
 					emitter = new Emitter(mc, EmitterTypes.LASER, this._boss_mc.x, this._boss_mc.y);
 					if(this.emitterLaser_2 != null) emitter.setEmitterType(this.emitterLaser_2.copyBase());
@@ -93,7 +93,7 @@
 				}
 				if (mc is Fla_EmitterYellowMissle)
 				{
-					//mc.visible = false;
+					mc.visible = false;
 
 					emitter = new Emitter(mc, EmitterTypes.MISSILE_YELLOW, this._boss_mc.x, this._boss_mc.y);
 					
@@ -103,7 +103,7 @@
 				}
 				if (mc is Fla_EmitterYellowMissle2)
 				{
-					//mc.visible = false;
+					mc.visible = false;
 
 					emitter = new Emitter(mc, EmitterTypes.MISSILE_YELLOW, this._boss_mc.x, this._boss_mc.y);
 					
@@ -113,7 +113,7 @@
 				}
 				if (mc is Fla_EmitterBlueMissle)
 				{
-					//mc.visible = false;
+					mc.visible = false;
 
 					emitter = new Emitter(mc, EmitterTypes.MISSILE_BLUE, this._boss_mc.x, this._boss_mc.y);
 					if (this.emitterBlueMissile != null)
@@ -124,7 +124,7 @@
 				}
 				if (mc is Fla_EmitterRedMissle)
 				{
-					//mc.visible = false;
+					mc.visible = false;
 
 					emitter = new Emitter(mc, EmitterTypes.MISSILE_RED, this._boss_mc.x, this._boss_mc.y);
 					if(this.emitterRedMissile != null) emitter.setEmitterType(this.emitterRedMissile.copyBase());
