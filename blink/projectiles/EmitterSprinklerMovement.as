@@ -25,7 +25,7 @@
 			this.emitterData = emitterData;
 			this.emitter = emitter;
 			this.cooldown = 0;
-			this.maxCoolDown = 5;
+			this.maxCoolDown = 3;
 			this.rotation = rotation;
 			this.curRotation = 0;
 			this.interval = interval;
