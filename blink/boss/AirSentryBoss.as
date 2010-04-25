@@ -4,6 +4,7 @@
 	import flash.display.MovieClip;
 	import flash.events.Event;
 	import projectiles.EmitterDefaultMovement;
+	import projectiles.IEmitterMovement;
 	/**
 	 * ...
 	 * @author Yuri Doubov
@@ -19,6 +20,7 @@
 			
 			this.emitterYellowMissile  = new EmitterDefaultMovement();
 			this.emitterBlueMissile  = new EmitterDefaultMovement();
+			this.emitterRedMissile = new EmitterDefaultMovement();
 			this._ymovement = 0;
 			initializeEmitters();
 		}

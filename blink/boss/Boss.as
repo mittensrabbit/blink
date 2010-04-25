@@ -104,7 +104,7 @@
 					//mc.visible = false;
 
 					emitter = new Emitter(mc, EmitterTypes.MISSILE_RED, this._boss_mc.x, this._boss_mc.y);
-					if(this.emitterRedMissile != null) emitter.setEmitterType(this.emitterRedMissile);
+					if(this.emitterRedMissile != null) emitter.setEmitterType(this.emitterRedMissile.copyBase());
 					emitters.push(emitter);
 				}
 			}
