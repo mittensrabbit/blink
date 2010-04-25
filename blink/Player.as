@@ -95,6 +95,7 @@
 		
 		public function blinkToRandom():void 
 		{
+			this._blinkAppRef.particleRequestHandler.requestParticle(new Fla_PlayerDeath(), this.ship.x, this.ship.y, 2, null);
 			ship.alpha = 0.1;
 			//playerData.damageMultiplier += 25;
 			playerData.health -= 20;
