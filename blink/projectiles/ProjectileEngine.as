@@ -67,7 +67,7 @@
 				bullet = new Fla_YellowMissle();
 				bullet.hitTest.visible = false;
 				projectile = new Projectile(bullet, 90,9);
-				projectile.addBehaviour(new StraightProjectileMovement(projectile, 8));
+				projectile.addBehaviour(new StraightProjectileMovement(projectile, 7));
 				projectile.addBehaviour(new RotateProjectileMovement(projectile, player.playerData));
 				projectile.addEndBehaviour(new FireworkProjectileMovement(projectile,20,EmitterTypes.EXPLOSION_CLOUD));
 			}
