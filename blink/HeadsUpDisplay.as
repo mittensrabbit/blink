@@ -42,7 +42,10 @@
 				this._blinkAppRef.endLevelPlayerDead();
 			this.playerMeter.update(healthPercent);
 			
-			healthPercent = int((bossData.health / BossData.MAX_HEALTH) * 100);
+			healthPercent = int((bossData.health / bossData.max_health) * 100);
+			if (healthPercent <= 0) {
+				_blinkAppRef.level.boss.bossDead();
+			}
 			this.bossMeter.update(healthPercent);
 		}
 	}

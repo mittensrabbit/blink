@@ -1,5 +1,6 @@
-﻿package blink.projectiles 
+﻿package projectiles 
 {
+	import flash.display.MovieClip;
 	import projectiles.Emitter;
 	import projectiles.EmitterData;
 	import projectiles.IEmitterMovement;
@@ -10,7 +11,7 @@
 	 */
 	public class EmitterIntervalShootMovement implements IEmitterMovement
 	{
-		private var emitter:Emitter;
+		private var emitter:MovieClip;
 		private var emitterData:EmitterData;
 		private var cooldown:int;
 		private var maxCoolDown:int;
@@ -28,11 +29,11 @@
 			this.emitter = emitter;
 		}
 		
-		public function baseCopy():EmitterIntervalShootMovement
+		public function copyBase():IEmitterMovement
 		{
 			return new EmitterIntervalShootMovement(this.maxCoolDown);
 		}
-		
+
 		public function update():void
 		{
 			cooldown += 1;

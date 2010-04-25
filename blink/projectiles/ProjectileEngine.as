@@ -47,7 +47,7 @@
 				bullet = new Fla_RedMissle();
 				bullet.hitTest.visible = false;
 				projectile = new Projectile(bullet, 90,9);
-				projectile.addBehaviour(new StraightProjectileMovement(projectile, 8));
+				projectile.addBehaviour(new StraightProjectileMovement(projectile, 6));
 				projectile.addBehaviour(new RotateProjectileMovement(projectile, player.playerData));
 				projectile.addEndBehaviour(new FireworkProjectileMovement(projectile,4,EmitterTypes.EXPLOSION_HOMING));
 			}
@@ -91,9 +91,10 @@
 			{
 				bullet = new Fla_LaserProjectile();
 				bullet.hitTest.visible = false;
-				projectile = new Projectile(bullet, 45,5);
+				projectile = new Projectile(bullet, 30,5);
 				projectile.addBehaviour(new StraightProjectileMovement(projectile, 10));
 				projectile.addBehaviour(new RotateProjectileMovement(projectile, player.playerData));
+				projectile.addEndBehaviour(new StraightProjectileMovement(projectile, 25));
 			}
 			
 			

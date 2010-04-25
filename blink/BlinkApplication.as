@@ -1,8 +1,12 @@
 ﻿package 
 {
 	import boss.AirSentryBoss;
+	import boss.AngryAirSentryBoss;
+	import boss.GunShipBoss;
+	import boss.HappySunBoss;
 	import boss.TestBoss;
 	import boss.TrollFaceBoss;
+	import boss.VeryHappySunBoss;
 	import events.LevelRequestEvent;
 	import flash.accessibility.Accessibility;
 	import flash.display.Bitmap;
@@ -36,7 +40,7 @@
 		private var stageSelection:StageSelection;
 		private var player:Player;
 		private var hud:HeadsUpDisplay;
-		private var level:Level;
+		public var level:Level;
 		private var projectileEngine:ProjectileEngine;
 		private var rulesPage:MovieClip;
 		
@@ -89,7 +93,11 @@
 			this.stageSelection.container.addEventListener(LevelRequestEvent.LEVEL_REQUEST, handleLevelRequest);
 			
 			this.stageSelection.addBossSelection(new StageSelectionElement(BossName.GOAT,  "Intro stage - learn to fly and blink!" ));
-			this.stageSelection.addBossSelection(new StageSelectionElement(BossName.AIR_SENTRY, "Beware the missles!" ));
+			this.stageSelection.addBossSelection(new StageSelectionElement(BossName.AIR_SENTRY, "Yellow missles explode into bullets - blink away!" ));
+			this.stageSelection.addBossSelection(new StageSelectionElement(BossName.ANGRY_AIR_SENTRY, "You beat him once.. now he is pissed!" ));
+			this.stageSelection.addBossSelection(new StageSelectionElement(BossName.HAPPY_SUN, "Lasers!" ));
+			this.stageSelection.addBossSelection(new StageSelectionElement(BossName.VERY_HAPPY_SUN, "MOAR Lasers!" ));
+			this.stageSelection.addBossSelection(new StageSelectionElement(BossName.GUN_SHIP, "Nuff said" ));
 			this.stageSelection.addBossSelection(new StageSelectionElement(BossName.TROLL_FACE, "Trolol!" ));
 			this.stageSelection.addBossSelection(new StageSelectionElement(BossName.TEST_BOSS, "This is my Element" ));
 
@@ -178,7 +186,15 @@
 				this.level.setBoss(new TrollFaceBoss(this, new Fla_Boss()));
 			else if (pBossType == BossName.TEST_BOSS)
 				this.level.setBoss(new TestBoss(this, new Fla_Boss()));
-			
+			else if (pBossType == BossName.ANGRY_AIR_SENTRY)
+				this.level.setBoss(new AngryAirSentryBoss(this, new Fla_Boss()));		
+			else if (pBossType == BossName.HAPPY_SUN)
+				this.level.setBoss(new HappySunBoss(this, new Fla_Boss()));	
+			else if (pBossType == BossName.VERY_HAPPY_SUN)
+				this.level.setBoss(new VeryHappySunBoss(this, new Fla_Boss()));	
+			else if (pBossType == BossName.GUN_SHIP)
+				this.level.setBoss(new GunShipBoss(this, new Fla_Boss()));	
+				
 			level.boss.container.addEventListener(ProjectileRequestEvent.PROJECT_REQUEST, handleProjectileRequest);
 			this.projectileEngine.container.addEventListener(ProjectileRequestEvent.PROJECT_REQUEST, handleProjectileRequest);
 			

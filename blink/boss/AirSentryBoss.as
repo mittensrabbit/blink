@@ -1,5 +1,6 @@
 ﻿package boss 
 {
+	import projectiles.EmitterIntervalShootMovement;
 	import boss.Boss;
 	import flash.display.MovieClip;
 	import flash.events.Event;
@@ -19,6 +20,7 @@
 			this._boss_mc.x = 400-(this._boss_mc.width/2);
 			
 			this.emitterYellowMissile  = new EmitterDefaultMovement();
+		//	this.emitterYellowMissile2  = new EmitterIntervalShootMovement(50);
 			this.emitterBlueMissile  = new EmitterDefaultMovement();
 			this.emitterRedMissile = new EmitterDefaultMovement();
 			this._ymovement = 0;

@@ -98,6 +98,7 @@
 						
 					}
 				}
+				this.emitterData.rotation += 1;// this.maxRotation - this.curRotation;
 				this.emitter.dispatchEvent(new ProjectileRequestEvent(ProjectileRequestEvent.PROJECT_REQUEST, this.emitterData));	
 				
 			}

@@ -3,6 +3,7 @@
 	import boss.Boss;
 	import flash.display.MovieClip;
 	import flash.events.Event;
+	import projectiles.EmitterIntervalShootMovement;
 	/**
 	 * ...
 	 * @author Yuri Doubov
@@ -16,9 +17,15 @@
 			this._boss_mc = new Fla_BossGoat();
 			this.container.addChild(this._boss_mc);
 			this._boss_mc.x = 400 - (this._boss_mc.width / 2);
-			
+			this.emitterBlueMissile  = new EmitterIntervalShootMovement(150);
+			this.emitterYellowMissile  = new EmitterIntervalShootMovement(120);
+			this.emitterRedMissile  = new EmitterIntervalShootMovement(120);
+			this.bossData.health = 600;
+			this.bossData.max_health = 600;
 			this._ymovement = 0;
 			initializeEmitters();
+			
+			
 		}
 		
 		protected override function moveBoss():void {
