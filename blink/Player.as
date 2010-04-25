@@ -8,6 +8,7 @@
 	import flash.events.MouseEvent;
 	import flash.filters.BlurFilter;
 	import flash.geom.Point;
+	import flash.media.Sound;
 	import flash.ui.Keyboard;
 	
 	/**
@@ -34,6 +35,8 @@
 		private var magnitude_left:Number;
 		private var magnitude_right:Number;
 		
+		private var _hit_snd:Sound;
+		
 		public function Player(pBlinkApp:BlinkApplication) 
 		{
 			this._blinkAppRef = pBlinkApp;
@@ -44,6 +47,8 @@
 			magnitude_down = 0;
 			magnitude_left = 0;
 			magnitude_right = 0;
+			
+			this._hit_snd = new Fla_sfx_hit();
 			
 			blinkMeter.container.x = -25;
 			blinkMeter.container.y = -50;
@@ -95,7 +100,7 @@
 		
 		public function blinkToRandom():void 
 		{
-			this._blinkAppRef.particleRequestHandler.requestParticle(new Fla_PlayerDeath(), this.ship.x, this.ship.y, 2, null);
+			this._blinkAppRef.particleRequestHandler.requestParticle(new Fla_PlayerDeath(), this.ship.x, this.ship.y, 2, this._hit_snd);
 			ship.alpha = 0.1;
 			//playerData.damageMultiplier += 25;
 			playerData.health -= 20;
