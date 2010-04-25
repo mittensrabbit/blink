@@ -13,9 +13,11 @@
 	 */
 	public class VeryHappySunBoss extends Boss
 	{
-		public function VeryHappySunBoss(pBlinkApp:BlinkApplication, container:MovieClip) 
+		public function VeryHappySunBoss(pBlinkApp:BlinkApplication, container:MovieClip,player:Player) 
 		{
+
 			super(pBlinkApp, container);
+			this.player = player;
 			this._boss_mc = new Fla_BossVeryHappySun();
 			this.container.addChild(this._boss_mc);
 			this._boss_mc.x = 400-(this._boss_mc.width/2);

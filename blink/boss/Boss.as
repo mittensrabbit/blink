@@ -35,12 +35,12 @@
 		protected var hitPointsArray:Array;
 		
 		public var _targetCoords_mc:MovieClip;
-		
+		public var player:Player;
 		public function Boss(pBlinkApp:BlinkApplication, container:MovieClip) 
 		{
 			this._blinkApplicationRef = pBlinkApp;
 			this.emitters = new Array();
-			
+			this.player = null;
 			this.emitterLaser_0 = null;
 			this.emitterLaser_1 = null;
 			this.emitterLaser_2 = null;
@@ -48,7 +48,6 @@
 			this.emitterRedMissile = null;
 			this.emitterYellowMissile = null;
 			this.emitterYellowMissile2 = null;
-			
 			this.hitPointsArray = new Array();
 			this.container = container;
 			this.bossData = new BossData(this);

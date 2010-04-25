@@ -4,19 +4,22 @@
 	import flash.display.MovieClip;
 	import flash.events.Event;
 	import projectiles.EmitterIntervalShootMovement;
+	import projectiles.EmitterPlayerTrackingMovement;
 	/**
 	 * ...
 	 * @author Yuri Doubov
 	 */
 	public class GoatBoss extends Boss
 	{
-		public function GoatBoss(pBlinkApp:BlinkApplication, container:MovieClip) 
+		public function GoatBoss(pBlinkApp:BlinkApplication, container:MovieClip,player:Player) 
 		{
 
 			super(pBlinkApp, container);
+			this.player = player;
 			this._boss_mc = new Fla_BossGoat();
 			this.container.addChild(this._boss_mc);
 			this._boss_mc.x = 400 - (this._boss_mc.width / 2);
+			this.emitterLaser_1 = new  EmitterPlayerTrackingMovement(5, 3, this.player.playerData, 3, 30);
 			this.emitterBlueMissile  = new EmitterIntervalShootMovement(150);
 			this.emitterYellowMissile  = new EmitterIntervalShootMovement(120);
 			this.emitterRedMissile  = new EmitterIntervalShootMovement(120);
