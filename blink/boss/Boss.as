@@ -20,12 +20,14 @@
 		protected var _xmovement:Number = 1;
 		protected var _ymovement:Number = 1;
 		protected var _rotation:Number = 1;
-		protected var _blinkApplicationRef:BlinkApplication 
+		protected var _blinkApplicationRef:BlinkApplication;
+		protected var hitPointsArray:Array;
 		
 		public function Boss(pBlinkApp:BlinkApplication, container:MovieClip) 
 		{
 			this._blinkApplicationRef = pBlinkApp;
 			this.emitters = new Array();
+			this.hitPointsArray = new Array();
 			this.container = container;
 			this.bossData = new BossData(this);
 			//initializeEmitters();
@@ -36,6 +38,10 @@
 			for (var i:int; i < this._boss_mc.numChildren; i++)
 			{
 				var mc:MovieClip = this._boss_mc.getChildAt(i) as MovieClip;
+				if (mc is Fla_HitTest) {
+					mc.visible = false;
+					this.hitPointsArray.push(mc);
+				}
 				if (mc is Fla_Emitter)
 				{
 					//mc.visible = false;
@@ -90,6 +96,14 @@
 				emitter.moveEmitter(this._xmovement, this._ymovement);
 				emitter.rotateEmitter(this._rotation);
 			}
+		}
+		
+		public function testPlayerCollision(pPlayer:Player):Boolean {
+			for (var i in this.hitPointsArray) {
+				if (pPlayer.ship.hitTestObject(this.hitPointsArray[i]))
+					return true;
+			}
+			return false;
 		}
 		
 		public function bossDead():void 

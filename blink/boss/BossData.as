@@ -21,6 +21,7 @@
 			//this.damageMultiplier = 100;
 			
 			this._bossRef = pBoss;
+			
 		}
 		
 		public function setCoordinates(coords:Point):void {

@@ -204,7 +204,7 @@
 		private function mainGameLoop(event:Event):void
 		{
 			this.blinkCooldown = (this.blinkCooldown < 1? 0:this.blinkCooldown - 1);
-			if (player.ship.hitTestObject(this.level.boss._boss_mc)) {
+			if (this.level.boss.testPlayerCollision(this.player)) {
 				player.blinkToRandom();
 			}
 			
