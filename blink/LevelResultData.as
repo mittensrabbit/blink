@@ -29,7 +29,7 @@
 		public function saveFinalTime():void
 		{
 			var nMillisElapsed:Number = new Date().time - nStart;	
-			var strTime:String = Math.floor(nMillisElapsed / (1000 * 60 * 60)) + "::" + 
+			var strTime:String = 
 			(Math.floor(nMillisElapsed / (1000 * 60)) % 60) + "::" + 
 			(Math.floor(nMillisElapsed / (1000)) % 60) + "::" + 
 			(Math.floor(nMillisElapsed) / (1000));
