@@ -1,6 +1,8 @@
 ﻿package 
 {
 	import boss.GunWallBoss;
+	import flash.media.SoundChannel;
+	import flash.media.SoundMixer;
 	import renderer.ParticleRequestHandler;
 	import boss.AirSentryBoss;
 	import boss.AngryAirSentryBoss;
@@ -46,6 +48,8 @@
 		private var projectileEngine:ProjectileEngine;
 		private var rulesPage:MovieClip;
 		
+		private var backgroundMusic:SoundChannel;
+		
 		private var currentLevelResult:LevelResultData;
 		
 		private var _zapperLightning:Zapper;
@@ -61,6 +65,7 @@
 			this.titleScreen.container.addEventListener(MouseEvent.CLICK, handleTitleClick);
 			this.bossResultScreen = new BossResultScreen();
 			this.bossResultScreen.container.addEventListener(MouseEvent.CLICK, showSelectorScreenFromResults);
+			this.backgroundMusic = new SoundChannel();
 			
 			this.deathScreen = new Fla_Death();
 			this.deathScreen.addEventListener(MouseEvent.CLICK, showSelectorScreenFromDeath);
@@ -98,8 +103,8 @@
 			
 			this.stageSelection.addBossSelection(new StageSelectionElement(BossName.GOAT,  "Intro stage - learn to fly and blink!" ));
 			this.stageSelection.addBossSelection(new StageSelectionElement(BossName.AIR_SENTRY, "Yellow missles explode into bullets - blink away!" ));
-			this.stageSelection.addBossSelection(new StageSelectionElement(BossName.GUN_WALL, "Blink between the lasers.." ));
 			this.stageSelection.addBossSelection(new StageSelectionElement(BossName.ANGRY_AIR_SENTRY, "You beat him once.. now he is pissed!" ));
+			this.stageSelection.addBossSelection(new StageSelectionElement(BossName.GUN_WALL, "Start flying up immediately!" ));
 			this.stageSelection.addBossSelection(new StageSelectionElement(BossName.HAPPY_SUN, "Lasers!" ));
 			this.stageSelection.addBossSelection(new StageSelectionElement(BossName.VERY_HAPPY_SUN, "MOAR Lasers!" ));
 			this.stageSelection.addBossSelection(new StageSelectionElement(BossName.GUN_SHIP, "Nuff said" ));
@@ -126,7 +131,8 @@
 		private function startLevel(event:MouseEvent):void
 		{
 			removeChild(rulesPage);
-			
+			backgroundMusic = new Fla_sfx_bgMusic().play();
+		
 			stage.addEventListener(Event.ENTER_FRAME, mainGameLoop);
 			stage.addEventListener(KeyboardEvent.KEY_DOWN, handleKeyboardDown);
 			stage.addEventListener(KeyboardEvent.KEY_UP, handleKeyboardUp);
@@ -137,6 +143,7 @@
 		
 		public function endLevel()
 		{
+			SoundMixer.stopAll();
 			trace("ENDING LEVEL");
 			currentLevelResult.saveFinalTime();
 			bossResultScreen.refresh(currentLevelResult);
