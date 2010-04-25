@@ -32,8 +32,15 @@
 			this.emitterData.rotation = emitter.rotation;
 			this.emitterData.type = type;
 			//this.behaviour = new EmitterDefaultMovement(this.emitter,this.emitterData);
-			this.behaviour = new EmitterSprinklerMovement(this.emitter,this.emitterData,90,10,3)
+			this.behaviour = new EmitterSprinklerMovement(90, 10, 3);
+			this.behaviour.bind(this.emitter, this.emitterData);
 			
+		}
+		
+		public function setEmitterType(type:IEmitterMovement):void
+		{
+			this.behaviour = type;
+			this.behaviour.bind(this.emitter, this.emitterData);
 		}
 		
 		public function handleEnterFrame(event:Event):void {

@@ -11,14 +11,26 @@
 	public class EmitterIntervalShootMovement implements IEmitterMovement
 	{
 		private var emitter:Emitter;
+		private var emitterData:EmitterData;
 		private var cooldown:int;
 		private var maxCoolDown:int;
-		public function EmitterIntervalShootMovement(emitterData:EmitterData, rate:int ) 
+		public function EmitterIntervalShootMovement(rate:int ) 
 		{
-			this.emitter = emitter;
+			
 			this.cooldown = 0;
 			this.maxCoolDown = rate;
 			
+		}
+		
+		public function bind(emitter:MovieClip, emitterData:EmitterData):void {
+			
+			this.emitterData = emitterData;
+			this.emitter = emitter;
+		}
+		
+		public function baseCopy():EmitterIntervalShootMovement
+		{
+			return new EmitterIntervalShootMovement(this.maxCoolDown);
 		}
 		
 		public function update():void

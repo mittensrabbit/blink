@@ -15,13 +15,23 @@
 		private var cooldown:int;
 		private var maxCoolDown:int;
 		
-		public function EmitterDefaultMovement(emitter:MovieClip, emitterData:EmitterData) 
+		public function EmitterDefaultMovement() 
 		{
+			
+			this.cooldown = 0;
+			this.maxCoolDown = 45;
+			
+		}
+		
+		public function bind(emitter:MovieClip, emitterData:EmitterData):void {
+			
 			this.emitterData = emitterData;
 			this.emitter = emitter;
-			this.cooldown = 0;
-			this.maxCoolDown = 1;
-
+		}
+		
+		public function copyBase():IEmitterMovement
+		{
+			return new EmitterDefaultMovement();
 		}
 		
 		public function update():void
