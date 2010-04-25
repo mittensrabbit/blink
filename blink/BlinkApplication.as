@@ -112,7 +112,7 @@
 			currentLevelResult.saveFinalTime();
 			bossResultScreen.refresh(currentLevelResult);
 			stageSelection.refreshMenu(currentLevelResult);
-				
+			
 			//show results, update stage selection screen with new rank etc..
 			stage.removeEventListener(Event.ENTER_FRAME, mainGameLoop);
 			stage.removeEventListener(KeyboardEvent.KEY_DOWN, handleKeyboardDown);
