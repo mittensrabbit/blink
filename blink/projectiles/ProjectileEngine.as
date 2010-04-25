@@ -59,7 +59,7 @@
 				projectile.dieOnEnd = false;
 				projectile.addBehaviour(new StraightProjectileMovement(projectile, 7));
 				projectile.addBehaviour(new RotateProjectileMovement(projectile, player.playerData,5));
-				projectile.addEndBehaviour(new StraightProjectileMovement(projectile, 10));
+				projectile.addEndBehaviour(new StraightProjectileMovement(projectile, 14));
 	
 				
 			}
