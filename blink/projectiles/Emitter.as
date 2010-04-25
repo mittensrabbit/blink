@@ -29,7 +29,7 @@
 			this.emitterData.coords = new Point(emitter.x+ shiftX, emitter.y + shiftY);
 			this.emitterData.rotation = emitter.rotation;
 			this.emitterData.type = type;
-			this.behaviour = new EmitterDefaultMovement(this.emitter,this.emitterData);
+			//this.behaviour = new EmitterDefaultMovement(this.emitter,this.emitterData);
 			this.behaviour = new EmitterSprinklerMovement(this.emitter,this.emitterData,90,10)
 			
 		}
