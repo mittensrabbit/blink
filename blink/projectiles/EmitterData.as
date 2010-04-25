@@ -12,7 +12,7 @@
 		public var coords:Point;
 		public var rotation:int;
 		public var type:String;
-		
+		public var gunRotation:int;
 		public function EmitterData() 
 		{
 
