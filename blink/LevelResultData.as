@@ -51,9 +51,9 @@
 					this.ranking = 1;
 				else if (seconds > 40)
 					this.ranking = 2;
-				else if (seconds > 30)
-					this.ranking = 3;
 				else if (seconds > 25)
+					this.ranking = 3;
+				else if (seconds > 20)
 					this.ranking = 4;
 				else if (seconds <= 20)
 					this.ranking = 5;
@@ -116,7 +116,7 @@
 					this.ranking = 2;
 				else if (seconds > 30)
 					this.ranking = 3;
-				else if (seconds > 27)
+				else if (seconds > 25)
 					this.ranking = 4;
 				else if (seconds <= 25)
 					this.ranking = 5;
