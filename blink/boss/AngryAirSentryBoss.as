@@ -12,9 +12,11 @@
 	 */
 	public class AngryAirSentryBoss extends Boss
 	{
-		public function AngryAirSentryBoss(pBlinkApp:BlinkApplication, container:MovieClip) 
+		public function AngryAirSentryBoss(pBlinkApp:BlinkApplication, container:MovieClip,player:Player) 
 		{
+
 			super(pBlinkApp, container);
+			this.player = player;
 			this._boss_mc = new Fla_BossAngryAirSentry();
 			this.container.addChild(this._boss_mc);
 			this._boss_mc.x = 400-(this._boss_mc.width/2);

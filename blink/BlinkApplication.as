@@ -179,21 +179,21 @@
 			this.projectileEngine = new ProjectileEngine(player);
 			
 			if(pBossType == BossName.GOAT)
-				this.level.setBoss(new GoatBoss(this, new Fla_Boss()));
+				this.level.setBoss(new GoatBoss(this, new Fla_Boss(),this.player));
 			else if (pBossType == BossName.AIR_SENTRY)
-				this.level.setBoss(new AirSentryBoss(this, new Fla_Boss()));
+				this.level.setBoss(new AirSentryBoss(this, new Fla_Boss(),this.player));
 			else if (pBossType == BossName.TROLL_FACE)
-				this.level.setBoss(new TrollFaceBoss(this, new Fla_Boss()));
+				this.level.setBoss(new TrollFaceBoss(this, new Fla_Boss(),this.player));
 			else if (pBossType == BossName.TEST_BOSS)
-				this.level.setBoss(new TestBoss(this, new Fla_Boss()));
+				this.level.setBoss(new TestBoss(this, new Fla_Boss(),this.player));
 			else if (pBossType == BossName.ANGRY_AIR_SENTRY)
-				this.level.setBoss(new AngryAirSentryBoss(this, new Fla_Boss()));		
+				this.level.setBoss(new AngryAirSentryBoss(this, new Fla_Boss(),this.player));		
 			else if (pBossType == BossName.HAPPY_SUN)
-				this.level.setBoss(new HappySunBoss(this, new Fla_Boss()));	
+				this.level.setBoss(new HappySunBoss(this, new Fla_Boss(),this.player));	
 			else if (pBossType == BossName.VERY_HAPPY_SUN)
-				this.level.setBoss(new VeryHappySunBoss(this, new Fla_Boss()));	
+				this.level.setBoss(new VeryHappySunBoss(this, new Fla_Boss(),this.player));	
 			else if (pBossType == BossName.GUN_SHIP)
-				this.level.setBoss(new GunShipBoss(this, new Fla_Boss()));	
+				this.level.setBoss(new GunShipBoss(this, new Fla_Boss(),this.player));	
 				
 			level.boss.container.addEventListener(ProjectileRequestEvent.PROJECT_REQUEST, handleProjectileRequest);
 			this.projectileEngine.container.addEventListener(ProjectileRequestEvent.PROJECT_REQUEST, handleProjectileRequest);
