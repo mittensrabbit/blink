@@ -20,10 +20,9 @@
 		private var direction:int;
 		private var cooldown:int;
 		private var maxCoolDown:int;
-		public function EmitterSprinklerMovement(emitter:MovieClip, emitterData:EmitterData, rotation:int, interval:int,rate:int ) 
+		public function EmitterSprinklerMovement(rotation:int, interval:int,rate:int ) 
 		{
-			this.emitterData = emitterData;
-			this.emitter = emitter;
+
 			this.cooldown = 0;
 			this.maxCoolDown = rate;
 			this.rotation = rotation;
@@ -33,11 +32,26 @@
 				this.direction = -1;
 			else
 				this.direction = 1;
-			this.minRotation = this.emitterData.rotation - (Math.abs(rotation) / 2);
-			this.maxRotation = this.emitterData.rotation + (Math.abs(rotation) / 2);
+			this.minRotation = 0;
+			this.maxRotation = 0;
 			
 			
 
+		}
+	
+		public function bind(emitter:MovieClip, emitterData:EmitterData):void {
+			
+			this.emitterData = emitterData;
+			this.emitter = emitter;
+			this.minRotation = this.emitterData.rotation - (Math.abs(rotation) / 2);
+			this.maxRotation = this.emitterData.rotation + (Math.abs(rotation) / 2);
+		}
+		
+		public function copyBase():IEmitterMovement
+		{
+			
+			return new EmitterSprinklerMovement(this.rotation, this.interval, this.maxCoolDown);
+			
 		}
 		
 		public function update():void
@@ -84,6 +98,7 @@
 						
 					}
 				}
+				this.emitterData.rotation += 1;// this.maxRotation - this.curRotation;
 				this.emitter.dispatchEvent(new ProjectileRequestEvent(ProjectileRequestEvent.PROJECT_REQUEST, this.emitterData));	
 				
 			}

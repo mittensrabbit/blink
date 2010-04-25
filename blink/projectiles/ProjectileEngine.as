@@ -46,8 +46,8 @@
 			{
 				bullet = new Fla_RedMissle();
 				bullet.hitTest.visible = false;
-				projectile = new Projectile(bullet, 90,12);
-				projectile.addBehaviour(new StraightProjectileMovement(projectile, 8));
+				projectile = new Projectile(bullet, 90,9);
+				projectile.addBehaviour(new StraightProjectileMovement(projectile, 6));
 				projectile.addBehaviour(new RotateProjectileMovement(projectile, player.playerData));
 				projectile.addEndBehaviour(new FireworkProjectileMovement(projectile,4,EmitterTypes.EXPLOSION_HOMING));
 			}
@@ -56,7 +56,7 @@
 
 				bullet = new Fla_BlueMissle();
 				bullet.hitTest.visible = false;
-				projectile = new Projectile(bullet, 90,10);
+				projectile = new Projectile(bullet, 90,9);
 				projectile.addBehaviour(new StraightProjectileMovement(projectile, 8));
 				projectile.addBehaviour(new RotateProjectileMovement(projectile, player.playerData));
 				projectile.addEndBehaviour(new StraightProjectileMovement(projectile, 10));
@@ -66,8 +66,8 @@
 			{
 				bullet = new Fla_YellowMissle();
 				bullet.hitTest.visible = false;
-				projectile = new Projectile(bullet, 90,10);
-				projectile.addBehaviour(new StraightProjectileMovement(projectile, 8));
+				projectile = new Projectile(bullet, 90,9);
+				projectile.addBehaviour(new StraightProjectileMovement(projectile, 7));
 				projectile.addBehaviour(new RotateProjectileMovement(projectile, player.playerData));
 				projectile.addEndBehaviour(new FireworkProjectileMovement(projectile,20,EmitterTypes.EXPLOSION_CLOUD));
 			}
@@ -75,8 +75,8 @@
 			{
 				bullet = new Fla_LaserProjectile();
 				bullet.hitTest.visible = false;
-				projectile = new Projectile(bullet, 30,2);
-				projectile.addBehaviour(new StraightProjectileMovement(projectile, 2));
+				projectile = new Projectile(bullet, 90,2);
+				projectile.addBehaviour(new StraightProjectileMovement(projectile,10));
 				
 			}
 			else if (event.emitterData.type == EmitterTypes.EXPLOSION_BULLET)
@@ -92,8 +92,9 @@
 				bullet = new Fla_LaserProjectile();
 				bullet.hitTest.visible = false;
 				projectile = new Projectile(bullet, 30,5);
-				projectile.addBehaviour(new StraightProjectileMovement(projectile, 5));
+				projectile.addBehaviour(new StraightProjectileMovement(projectile, 10));
 				projectile.addBehaviour(new RotateProjectileMovement(projectile, player.playerData));
+				projectile.addEndBehaviour(new StraightProjectileMovement(projectile, 25));
 			}
 			
 			

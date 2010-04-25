@@ -8,7 +8,7 @@
 	 */
 	public class BossData 
 	{
-		public static var MAX_HEALTH = 1000;
+		public var max_health = 700;
 		public var health:int;
 		public var coords:Point;
 		//public var damageMultiplier:Number;
@@ -16,7 +16,7 @@
 		private var _bossRef:Boss;
 		
 		public function BossData(pBoss:Boss) {
-			this.health = 100;
+			this.health = 700;
 			this.coords = new Point(400, 500);
 			//this.damageMultiplier = 100;
 			
