@@ -67,7 +67,7 @@
 			this.bossResultScreen = new BossResultScreen();
 			this.bossResultScreen.container.addEventListener(MouseEvent.CLICK, showSelectorScreenFromResults);
 			this.backgroundMusic = new SoundChannel();
-			
+			backgroundMusic = new Fla_sfx_titleScreen().play();
 			this.deathScreen = new Fla_Death();
 			this.deathScreen.addEventListener(MouseEvent.CLICK, showSelectorScreenFromDeath);
 			
@@ -91,6 +91,8 @@
 		
 		private function setupSelectionFromResult():void
 		{
+			SoundMixer.stopAll();
+			backgroundMusic = new Fla_sfx_titleScreen().play();
 			this.addChild(stageSelection.container);
 			this.addChild(stageSelection.handles);
 			this.stageSelection.container.addEventListener(LevelRequestEvent.LEVEL_REQUEST, handleLevelRequest);	
@@ -104,10 +106,10 @@
 			
 			this.stageSelection.addBossSelection(new StageSelectionElement(BossName.GOAT,  "Intro stage - learn to fly and blink!" ));
 			this.stageSelection.addBossSelection(new StageSelectionElement(BossName.AIR_SENTRY, "Yellow missles explode into bullets - blink away!" ));
-			this.stageSelection.addBossSelection(new StageSelectionElement(BossName.ANGRY_AIR_SENTRY, "You beat him once.. now he is pissed!" ));
-			this.stageSelection.addBossSelection(new StageSelectionElement(BossName.GUN_WALL, "Start flying up immediately!" ));
 			this.stageSelection.addBossSelection(new StageSelectionElement(BossName.HAPPY_SUN, "Lasers!" ));
-			this.stageSelection.addBossSelection(new StageSelectionElement(BossName.VERY_HAPPY_SUN, "MOAR Lasers!" ));
+			this.stageSelection.addBossSelection(new StageSelectionElement(BossName.GUN_WALL, "Start flying up immediately!" ));
+			this.stageSelection.addBossSelection(new StageSelectionElement(BossName.ANGRY_AIR_SENTRY, "Lot of missles!" ));
+			//this.stageSelection.addBossSelection(new StageSelectionElement(BossName.VERY_HAPPY_SUN, "MOAR Lasers!" ));
 			this.stageSelection.addBossSelection(new StageSelectionElement(BossName.GUN_SHIP, "Nuff said" ));
 			this.stageSelection.addBossSelection(new StageSelectionElement(BossName.TROLL_FACE, "Trolol!" ));
 
@@ -131,6 +133,7 @@
 		private function startLevel(event:MouseEvent):void
 		{
 			removeChild(rulesPage);
+			SoundMixer.stopAll();
 			backgroundMusic = new Fla_sfx_bgMusic().play();
 			backgroundMusic = new Fla_sfx_flight().play();
 			
