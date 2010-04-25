@@ -47,19 +47,31 @@
 			if (BossName.GOAT == this.levelName) {
 				if (minutes >= 1) 
 					this.ranking = 0;
-				else if (seconds > 50) 
+				else if (seconds > 40) 
 					this.ranking = 1;
-				else if (seconds > 40)
+				else if (seconds > 30)
 					this.ranking = 2;
-				else if (seconds > 25)
-					this.ranking = 3;
 				else if (seconds > 20)
+					this.ranking = 3;
+				else if (seconds > 14)
 					this.ranking = 4;
-				else if (seconds <= 20)
+				else if (seconds <= 14)
 					this.ranking = 5;
 				
 			}
 			else if (BossName.AIR_SENTRY == this.levelName) {
+				if (minutes >= 1) 
+					this.ranking = 1;
+				else if (seconds > 50) 
+					this.ranking = 2;
+				else if (seconds > 40)
+					this.ranking = 3;
+				else if (seconds > 35)
+					this.ranking = 4;
+				else if (seconds <= 35)
+					this.ranking = 5;
+			}
+			else if (BossName.GUN_WALL == this.levelName) {
 				if (minutes >= 1) 
 					this.ranking = 1;
 				else if (seconds > 50) 

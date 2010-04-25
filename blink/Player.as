@@ -97,7 +97,7 @@
 		{
 			ship.alpha = 0.1;
 			//playerData.damageMultiplier += 25;
-			playerData.health -= 100;
+			playerData.health -= 20;
 			var mcIn:MovieClip = new Fla_TeleportIn();
 			mcIn.alpha = 0.2;
 			mcIn.x = playerData.coords.x;
