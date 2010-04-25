@@ -71,6 +71,18 @@
 				else if (seconds <= 35)
 					this.ranking = 5;
 			}
+			else if (BossName.GUN_WALL == this.levelName) {
+				if (minutes >= 1) 
+					this.ranking = 1;
+				else if (seconds > 50) 
+					this.ranking = 2;
+				else if (seconds > 40)
+					this.ranking = 3;
+				else if (seconds > 35)
+					this.ranking = 4;
+				else if (seconds <= 35)
+					this.ranking = 5;
+			}
 			else if (BossName.TROLL_FACE == this.levelName) {
 				if (minutes >= 1) 
 					this.ranking = 1;
