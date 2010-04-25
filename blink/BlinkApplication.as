@@ -98,11 +98,11 @@
 			
 			this.stageSelection.addBossSelection(new StageSelectionElement(BossName.GOAT,  "Intro stage - learn to fly and blink!" ));
 			this.stageSelection.addBossSelection(new StageSelectionElement(BossName.AIR_SENTRY, "Yellow missles explode into bullets - blink away!" ));
+			this.stageSelection.addBossSelection(new StageSelectionElement(BossName.GUN_WALL, "Blink between the lasers.." ));
 			this.stageSelection.addBossSelection(new StageSelectionElement(BossName.ANGRY_AIR_SENTRY, "You beat him once.. now he is pissed!" ));
 			this.stageSelection.addBossSelection(new StageSelectionElement(BossName.HAPPY_SUN, "Lasers!" ));
 			this.stageSelection.addBossSelection(new StageSelectionElement(BossName.VERY_HAPPY_SUN, "MOAR Lasers!" ));
 			this.stageSelection.addBossSelection(new StageSelectionElement(BossName.GUN_SHIP, "Nuff said" ));
-			this.stageSelection.addBossSelection(new StageSelectionElement(BossName.GUN_WALL, "Nuff said" ));
 			this.stageSelection.addBossSelection(new StageSelectionElement(BossName.TROLL_FACE, "Trolol!" ));
 			this.stageSelection.addBossSelection(new StageSelectionElement(BossName.TEST_BOSS, "This is my Element" ));
 
