@@ -1,6 +1,7 @@
 ﻿package 
 {
 	import boss.AirSentryBoss;
+	import boss.TestBoss;
 	import boss.TrollFaceBoss;
 	import events.LevelRequestEvent;
 	import flash.accessibility.Accessibility;
@@ -90,7 +91,7 @@
 			this.stageSelection.addBossSelection(new StageSelectionElement(BossName.GOAT,  "Intro stage - learn to fly and blink!" ));
 			this.stageSelection.addBossSelection(new StageSelectionElement(BossName.AIR_SENTRY, "Beware the missles!" ));
 			this.stageSelection.addBossSelection(new StageSelectionElement(BossName.TROLL_FACE, "Trolol!" ));
-			this.stageSelection.addBossSelection(new StageSelectionElement("Level 4", "This is my Element" ));
+			this.stageSelection.addBossSelection(new StageSelectionElement(BossName.TEST_BOSS, "This is my Element" ));
 
 			this.addChild(stageSelection.container);
 			this.addChild(stageSelection.handles);
@@ -175,6 +176,8 @@
 				this.level.setBoss(new AirSentryBoss(this, new Fla_Boss()));
 			else if (pBossType == BossName.TROLL_FACE)
 				this.level.setBoss(new TrollFaceBoss(this, new Fla_Boss()));
+			else if (pBossType == BossName.TEST_BOSS)
+				this.level.setBoss(new TestBoss(this, new Fla_Boss()));
 			
 			level.boss.container.addEventListener(ProjectileRequestEvent.PROJECT_REQUEST, handleProjectileRequest);
 			this.projectileEngine.container.addEventListener(ProjectileRequestEvent.PROJECT_REQUEST, handleProjectileRequest);
