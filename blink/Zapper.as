@@ -33,8 +33,8 @@ package
 		public function handleEnterFrame():void {
 			//trace("boss container" + this._bossRef.container.x + " y " + this._bossRef.container.y);
 			
-			this._zapper_mc.x = this._bossRef._boss_mc.x + this._bossRef._boss_mc.width / 2;
-			this._zapper_mc.y = this._bossRef._boss_mc.y + this._bossRef._boss_mc.height / 2;
+			this._zapper_mc.x = this._bossRef._boss_mc.x + this._bossRef._targetCoords_mc.x;//this._bossRef._boss_mc.x + this._bossRef._boss_mc.width / 2;
+			this._zapper_mc.y = this._bossRef._boss_mc.y + this._bossRef._targetCoords_mc.y;//this._bossRef._boss_mc.y + this._bossRef._boss_mc.height / 2;
 			var tempXside:Number = this._playerRef.playerData.coords.x - this._zapper_mc.x;
 			var tempYside:Number = this._playerRef.playerData.coords.y - this._zapper_mc.y;
 			var hypotenuse:Number = Math.sqrt(tempXside * tempXside + tempYside * tempYside);
