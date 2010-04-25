@@ -20,7 +20,7 @@
 			this.emitterData = emitterData;
 			this.emitter = emitter;
 			this.cooldown = 0;
-			this.maxCoolDown = 15;
+			this.maxCoolDown = 30;
 
 		}
 		
