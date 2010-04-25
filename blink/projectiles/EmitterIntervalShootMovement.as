@@ -13,11 +13,11 @@
 		private var emitter:Emitter;
 		private var cooldown:int;
 		private var maxCoolDown:int;
-		public function EmitterIntervalShootMovement(emitterData:EmitterData, interval:int ) 
+		public function EmitterIntervalShootMovement(emitterData:EmitterData, rate:int ) 
 		{
 			this.emitter = emitter;
 			this.cooldown = 0;
-			this.maxCoolDown = interval;
+			this.maxCoolDown = rate;
 			
 		}
 		
