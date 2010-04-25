@@ -19,7 +19,8 @@
 		private var emitter:MovieClip;
 		private var emitterData:EmitterData;
 		private var behaviour:IEmitterMovement;
-		
+		var cooldown = 0 ;
+		var maxCoolDown = 10;
 		
 		public function Emitter(emitter:MovieClip,type:String, shiftX:Number, shiftY:Number) 
 		{
@@ -36,16 +37,16 @@
 		public function handleEnterFrame(event:Event):void {
 			
 			
-			//cooldown += 1;
-			//if (cooldown >= maxCoolDown)
-			//{
-				//cooldown = 0;
+			cooldown += 1;
+			if (cooldown >= maxCoolDown)
+			{
+				cooldown = 0;
 				 //apply emitter behaviour + dispatch
-				//emitterData.rotation += 0.0;
-				//emitter.dispatchEvent(new ProjectileRequestEvent(ProjectileRequestEvent.PROJECT_REQUEST, emitterData));	
-				//
-			//}
-			this.behaviour.update();
+				emitterData.rotation += 0.0;
+				emitter.dispatchEvent(new ProjectileRequestEvent(ProjectileRequestEvent.PROJECT_REQUEST, emitterData));	
+				
+			}
+			//this.behaviour.update();
 		}
 		
 		public function moveEmitter(pxShift:Number, pyShift:Number):void {

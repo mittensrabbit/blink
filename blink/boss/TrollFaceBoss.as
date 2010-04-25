@@ -44,12 +44,12 @@
 			this.container.removeChild(this._boss_mc);
 			this._blinkApplicationRef.endLevel();
 			//delete this;
-			trace("VERY DEAD");
+			//trace("VERY DEAD");
 		}
 		
 		protected override function rotateBoss():void {
 			this._boss_mc.rotation += this._rotation;
-			if (this._boss_mc.rotation > 10 || this._boss_mc.rotation < -10)
+			if (this._boss_mc.rotation > 30 || this._boss_mc.rotation < -30)
 				this._rotation = -this._rotation;
 		}
 		
